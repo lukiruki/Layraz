@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,8 +15,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        
+        
+        UINavigationBar.appearance().barTintColor = UIColor(red: 216.0/255.0, green: 74.0/255.0, blue: 32.0/255.0, alpha: 1.0)
+        UINavigationBar.appearance().tintColor = UIColor.white
+        
+        if let barFont = UIFont(name: "Avenir-Light", size: 24.0) {
+            UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName:barFont]
+        }
+        
+        UITabBar.appearance().tintColor =  UIColor(red: 216.0/255.0, green: 74.0/255.0, blue: 32.0/255.0, alpha: 1.0)
+        UITabBar.appearance().backgroundColor = UIColor.black
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, error) in
+            if accepted {
+                print("Notification access success.")
+            } else {
+                print("User notifications i not allowed")
+            }
+        }
+        
+               
+        
+        
+//        let getSessionToken = UserDefaults.standard.string(forKey: "sessionToken")
+//        
+//        if getSessionToken != nil {
+//            
+//            let sb: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//            let controllerLogin : UIViewController = sb.instantiateViewController(withIdentifier: "newView") as! MainViewController
+//            self.window?.rootViewController = controllerLogin
+//        } else {
+//            
+//            let sb: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//            let controllerLogin : UIViewController = sb.instantiateViewController(withIdentifier: "firstView") as! MasterViewController
+//            self.window?.rootViewController = controllerLogin
+//        }
+
+        
+        
+        
         return true
     }
 

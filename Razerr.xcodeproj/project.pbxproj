@@ -7,21 +7,140 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A55938CB1E826C5E00B5E0F8 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55938CA1E826C5E00B5E0F8 /* NotificationsViewController.swift */; };
+		A55938CD1E828F2A00B5E0F8 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = A55938CC1E828F2A00B5E0F8 /* logo.png */; };
+		A55938D01E82960800B5E0F8 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55938CE1E82960800B5E0F8 /* UserNotifications.framework */; };
+		A55938D11E82960800B5E0F8 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55938CF1E82960800B5E0F8 /* UserNotificationsUI.framework */; };
+		A5A0327B1E83EEDD0007887B /* ListeningTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A0327A1E83EEDD0007887B /* ListeningTableViewController.swift */; };
+		A5A0327D1E83EEED0007887B /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A0327C1E83EEED0007887B /* PlayerViewController.swift */; };
+		A5A0327F1E83EF090007887B /* ListeningTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A0327E1E83EF090007887B /* ListeningTableViewCell.swift */; };
+		A5A032821E83EF300007887B /* MusicLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A032811E83EF300007887B /* MusicLibrary.swift */; };
+		A5A2FCC71E9A64DA00D806E4 /* AllWordsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A2FCC61E9A64DA00D806E4 /* AllWordsTableViewCell.swift */; };
+		A5AC6FCA1E99886D00A4F0EF /* MainReadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC6FC91E99886D00A4F0EF /* MainReadingCollectionViewCell.swift */; };
+		A5B24E8B1E79C9D0001D3118 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B24E8A1E79C9D0001D3118 /* Config.swift */; };
+		A5B24E8E1E79C9F1001D3118 /* level1.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5B24E8D1E79C9F1001D3118 /* level1.plist */; };
+		A5B24E901E79C9F8001D3118 /* level2.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5B24E8F1E79C9F8001D3118 /* level2.plist */; };
+		A5B24E921E79C9FD001D3118 /* level3.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5B24E911E79C9FD001D3118 /* level3.plist */; };
+		A5B24E981E79CA21001D3118 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B24E971E79CA21001D3118 /* Level.swift */; };
+		A5B24EA01E79CAAC001D3118 /* board.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A5B24E9F1E79CAAC001D3118 /* board.jpg */; };
+		A5B24EA21E79CAB1001D3118 /* board@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A5B24EA11E79CAB1001D3118 /* board@2x.jpg */; };
+		A5B24EA41E79CAB5001D3118 /* btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B24EA31E79CAB5001D3118 /* btn.png */; };
+		A5B24EA61E79CAB9001D3118 /* tile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B24EA51E79CAB9001D3118 /* tile@2x.png */; };
+		A5B24EA81E79CABE001D3118 /* btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B24EA71E79CABE001D3118 /* btn@2x.png */; };
+		A5B24EAA1E79CAC3001D3118 /* slot.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B24EA91E79CAC3001D3118 /* slot.png */; };
+		A5B24EAC1E79CACA001D3118 /* slot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B24EAB1E79CACA001D3118 /* slot@2x.png */; };
+		A5B24EAE1E79CACF001D3118 /* tile.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B24EAD1E79CACF001D3118 /* tile.png */; };
+		A5B24EB01E79CEBC001D3118 /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5B24EAF1E79CEBC001D3118 /* win.mp3 */; };
+		A5B24EB31E79CEC7001D3118 /* ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5B24EB21E79CEC7001D3118 /* ding.mp3 */; };
+		A5B24EB51E79CED2001D3118 /* particle.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B24EB41E79CED2001D3118 /* particle.png */; };
+		A5B24EB81E79CEFC001D3118 /* SentenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B24EB71E79CEFC001D3118 /* SentenceViewController.swift */; };
+		A5B67BCA1E99985C004614B2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B67BC91E99985C004614B2 /* SettingsViewController.swift */; };
+		A5B67BCC1E999AB5004614B2 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B67BCB1E999AB5004614B2 /* CustomSlider.swift */; };
+		A5BDD1A31E957B770072E763 /* ListeningApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BDD1A21E957B770072E763 /* ListeningApi.swift */; };
+		A5BDD1A51E9580880072E763 /* MainPodcastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BDD1A41E9580880072E763 /* MainPodcastTableViewCell.swift */; };
+		A5BDD1A91E9586510072E763 /* ListeningAllModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BDD1A81E9586510072E763 /* ListeningAllModel.swift */; };
+		A5BDD1AE1E95CF120072E763 /* ListeningDetailApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BDD1AD1E95CF120072E763 /* ListeningDetailApi.swift */; };
+		A5BDD1B01E95CF4C0072E763 /* AllListenDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BDD1AF1E95CF4C0072E763 /* AllListenDetailModel.swift */; };
+		A5C012961E9BC0AB00F9062A /* NotificationsWordsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C012951E9BC0AB00F9062A /* NotificationsWordsModel.swift */; };
+		A5CDE4251E706D9A00D720DA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CDE4241E706D9A00D720DA /* MainViewController.swift */; };
+		A5D359601E9371BA006CA4F4 /* FIrstCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D3595F1E9371BA006CA4F4 /* FIrstCollectionViewController.swift */; };
+		A5D359621E9371C9006CA4F4 /* FirstCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D359611E9371C9006CA4F4 /* FirstCollectionViewCell.swift */; };
+		A5D359641E9372FD006CA4F4 /* FirstStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D359631E9372FD006CA4F4 /* FirstStruct.swift */; };
+		A5D3596C1E939AEA006CA4F4 /* KindOfLearningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D3596B1E939AEA006CA4F4 /* KindOfLearningViewController.swift */; };
+		A5D359751E93B7EB006CA4F4 /* MainPodcastTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D359741E93B7EB006CA4F4 /* MainPodcastTableViewController.swift */; };
+		A5D359791E93B864006CA4F4 /* MainReadingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D359781E93B864006CA4F4 /* MainReadingCollectionViewController.swift */; };
+		A5D3597B1E93B911006CA4F4 /* ReadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D3597A1E93B911006CA4F4 /* ReadingViewController.swift */; };
+		A5D3597D1E93B91F006CA4F4 /* AllWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D3597C1E93B91F006CA4F4 /* AllWordsViewController.swift */; };
+		A5D359811E93B9E1006CA4F4 /* RandomlySentencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D359801E93B9E1006CA4F4 /* RandomlySentencesViewController.swift */; };
+		A5D359831E93BAD8006CA4F4 /* MainWritingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D359821E93BAD8006CA4F4 /* MainWritingCollectionViewController.swift */; };
+		A5E6FE081E8090EC005F92DB /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E6FE071E8090EC005F92DB /* GameController.swift */; };
+		A5E6FE0A1E809675005F92DB /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E6FE091E809675005F92DB /* TileView.swift */; };
+		A5E6FE0C1E80A346005F92DB /* TargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E6FE0B1E80A346005F92DB /* TargetView.swift */; };
+		A5F176101E81166D00426372 /* StopWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F1760F1E81166D00426372 /* StopWatchView.swift */; };
+		A5F176121E8117D200426372 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F176111E8117D200426372 /* HudView.swift */; };
+		A5F176141E812B3300426372 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F176131E812B3300426372 /* GameData.swift */; };
+		A5F176161E812E8200426372 /* CounterLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F176151E812E8200426372 /* CounterLabelView.swift */; };
+		A5F1761B1E814E9700426372 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F1761A1E814E9700426372 /* AudioController.swift */; };
+		B250C4841E37A8210055E433 /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B250C4831E37A8210055E433 /* Spot.swift */; };
+		B250C4861E37A96B0055E433 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B250C4851E37A96B0055E433 /* MasterViewController.swift */; };
+		B250C4881E37AA2E0055E433 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B250C4871E37AA2E0055E433 /* Main.storyboard */; settings = {ASSET_TAGS = ("#2", ); }; };
+		B250C48A1E37AAF20055E433 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = B250C4891E37AAF20055E433 /* keys.plist */; };
 		B2C2B4241E350EAE00AFCE7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C2B4231E350EAE00AFCE7A /* AppDelegate.swift */; };
-		B2C2B4261E350EAE00AFCE7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C2B4251E350EAE00AFCE7A /* ViewController.swift */; };
-		B2C2B4291E350EAE00AFCE7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2C2B4271E350EAE00AFCE7A /* Main.storyboard */; };
 		B2C2B42B1E350EAE00AFCE7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2C2B42A1E350EAE00AFCE7A /* Assets.xcassets */; };
 		B2C2B42E1E350EAE00AFCE7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2C2B42C1E350EAE00AFCE7A /* LaunchScreen.storyboard */; };
+		E193DF3644286289CE7DBF23 /* Pods_Razerr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6A8B80264482DE5CC29B90 /* Pods_Razerr.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A6A8B80264482DE5CC29B90 /* Pods_Razerr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Razerr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A55938CA1E826C5E00B5E0F8 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		A55938CC1E828F2A00B5E0F8 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		A55938CE1E82960800B5E0F8 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		A55938CF1E82960800B5E0F8 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		A5A0327A1E83EEDD0007887B /* ListeningTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeningTableViewController.swift; sourceTree = "<group>"; };
+		A5A0327C1E83EEED0007887B /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		A5A0327E1E83EF090007887B /* ListeningTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeningTableViewCell.swift; sourceTree = "<group>"; };
+		A5A032811E83EF300007887B /* MusicLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicLibrary.swift; sourceTree = "<group>"; };
+		A5A2FCC61E9A64DA00D806E4 /* AllWordsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllWordsTableViewCell.swift; sourceTree = "<group>"; };
+		A5AC6FC91E99886D00A4F0EF /* MainReadingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainReadingCollectionViewCell.swift; sourceTree = "<group>"; };
+		A5B24E8A1E79C9D0001D3118 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		A5B24E8D1E79C9F1001D3118 /* level1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level1.plist; sourceTree = "<group>"; };
+		A5B24E8F1E79C9F8001D3118 /* level2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level2.plist; sourceTree = "<group>"; };
+		A5B24E911E79C9FD001D3118 /* level3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level3.plist; sourceTree = "<group>"; };
+		A5B24E971E79CA21001D3118 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		A5B24E9F1E79CAAC001D3118 /* board.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = board.jpg; sourceTree = "<group>"; };
+		A5B24EA11E79CAB1001D3118 /* board@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "board@2x.jpg"; sourceTree = "<group>"; };
+		A5B24EA31E79CAB5001D3118 /* btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn.png; sourceTree = "<group>"; };
+		A5B24EA51E79CAB9001D3118 /* tile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile@2x.png"; sourceTree = "<group>"; };
+		A5B24EA71E79CABE001D3118 /* btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn@2x.png"; sourceTree = "<group>"; };
+		A5B24EA91E79CAC3001D3118 /* slot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slot.png; sourceTree = "<group>"; };
+		A5B24EAB1E79CACA001D3118 /* slot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slot@2x.png"; sourceTree = "<group>"; };
+		A5B24EAD1E79CACF001D3118 /* tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile.png; sourceTree = "<group>"; };
+		A5B24EAF1E79CEBC001D3118 /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win.mp3; sourceTree = "<group>"; };
+		A5B24EB11E79CEC1001D3118 /* wrong.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = wrong.m4a; sourceTree = "<group>"; };
+		A5B24EB21E79CEC7001D3118 /* ding.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ding.mp3; sourceTree = "<group>"; };
+		A5B24EB41E79CED2001D3118 /* particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle.png; sourceTree = "<group>"; };
+		A5B24EB71E79CEFC001D3118 /* SentenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentenceViewController.swift; sourceTree = "<group>"; };
+		A5B67BC91E99985C004614B2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A5B67BCB1E999AB5004614B2 /* CustomSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		A5BDD1A21E957B770072E763 /* ListeningApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeningApi.swift; sourceTree = "<group>"; };
+		A5BDD1A41E9580880072E763 /* MainPodcastTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPodcastTableViewCell.swift; sourceTree = "<group>"; };
+		A5BDD1A81E9586510072E763 /* ListeningAllModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeningAllModel.swift; sourceTree = "<group>"; };
+		A5BDD1AD1E95CF120072E763 /* ListeningDetailApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeningDetailApi.swift; sourceTree = "<group>"; };
+		A5BDD1AF1E95CF4C0072E763 /* AllListenDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllListenDetailModel.swift; sourceTree = "<group>"; };
+		A5C012951E9BC0AB00F9062A /* NotificationsWordsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsWordsModel.swift; sourceTree = "<group>"; };
+		A5CDE4241E706D9A00D720DA /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A5D3595F1E9371BA006CA4F4 /* FIrstCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIrstCollectionViewController.swift; sourceTree = "<group>"; };
+		A5D359611E9371C9006CA4F4 /* FirstCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstCollectionViewCell.swift; sourceTree = "<group>"; };
+		A5D359631E9372FD006CA4F4 /* FirstStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstStruct.swift; sourceTree = "<group>"; };
+		A5D3596B1E939AEA006CA4F4 /* KindOfLearningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindOfLearningViewController.swift; sourceTree = "<group>"; };
+		A5D359741E93B7EB006CA4F4 /* MainPodcastTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPodcastTableViewController.swift; sourceTree = "<group>"; };
+		A5D359781E93B864006CA4F4 /* MainReadingCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainReadingCollectionViewController.swift; sourceTree = "<group>"; };
+		A5D3597A1E93B911006CA4F4 /* ReadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingViewController.swift; sourceTree = "<group>"; };
+		A5D3597C1E93B91F006CA4F4 /* AllWordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllWordsViewController.swift; sourceTree = "<group>"; };
+		A5D359801E93B9E1006CA4F4 /* RandomlySentencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomlySentencesViewController.swift; sourceTree = "<group>"; };
+		A5D359821E93BAD8006CA4F4 /* MainWritingCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWritingCollectionViewController.swift; sourceTree = "<group>"; };
+		A5E6FE071E8090EC005F92DB /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		A5E6FE091E809675005F92DB /* TileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
+		A5E6FE0B1E80A346005F92DB /* TargetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetView.swift; sourceTree = "<group>"; };
+		A5F1760F1E81166D00426372 /* StopWatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopWatchView.swift; sourceTree = "<group>"; };
+		A5F176111E8117D200426372 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
+		A5F176131E812B3300426372 /* GameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
+		A5F176151E812E8200426372 /* CounterLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterLabelView.swift; sourceTree = "<group>"; };
+		A5F176181E81337500426372 /* Helv Children.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helv Children.otf"; sourceTree = "<group>"; };
+		A5F176191E81366C00426372 /* Comic_Andy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Comic_Andy.ttf; sourceTree = "<group>"; };
+		A5F1761A1E814E9700426372 /* AudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
+		B250C4831E37A8210055E433 /* Spot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
+		B250C4851E37A96B0055E433 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		B250C4871E37AA2E0055E433 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B250C4891E37AAF20055E433 /* keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		B2C2B4201E350EAE00AFCE7A /* Razerr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Razerr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2C2B4231E350EAE00AFCE7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B2C2B4251E350EAE00AFCE7A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B2C2B4281E350EAE00AFCE7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B2C2B42A1E350EAE00AFCE7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2C2B42D1E350EAE00AFCE7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B2C2B42F1E350EAE00AFCE7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C59558399EFDB2256D5DF422 /* Pods-Razerr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Razerr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Razerr/Pods-Razerr.debug.xcconfig"; sourceTree = "<group>"; };
+		E5E34FEE4463BBE41BC3E148 /* Pods-Razerr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Razerr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Razerr/Pods-Razerr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +148,258 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A55938D01E82960800B5E0F8 /* UserNotifications.framework in Frameworks */,
+				A55938D11E82960800B5E0F8 /* UserNotificationsUI.framework in Frameworks */,
+				E193DF3644286289CE7DBF23 /* Pods_Razerr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		90AC8B82C90650CAB12DBF9C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A55938CE1E82960800B5E0F8 /* UserNotifications.framework */,
+				A55938CF1E82960800B5E0F8 /* UserNotificationsUI.framework */,
+				0A6A8B80264482DE5CC29B90 /* Pods_Razerr.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A55938C91E826C1F00B5E0F8 /* NotificationsCenter */ = {
+			isa = PBXGroup;
+			children = (
+				A55938CA1E826C5E00B5E0F8 /* NotificationsViewController.swift */,
+				A5C012951E9BC0AB00F9062A /* NotificationsWordsModel.swift */,
+			);
+			name = NotificationsCenter;
+			sourceTree = "<group>";
+		};
+		A5A032791E83EE880007887B /* ListeningCenter */ = {
+			isa = PBXGroup;
+			children = (
+				A5A032801E83EF120007887B /* Model */,
+				A5A0327A1E83EEDD0007887B /* ListeningTableViewController.swift */,
+				A5A0327C1E83EEED0007887B /* PlayerViewController.swift */,
+				A5A0327E1E83EF090007887B /* ListeningTableViewCell.swift */,
+				A5BDD1AD1E95CF120072E763 /* ListeningDetailApi.swift */,
+			);
+			name = ListeningCenter;
+			sourceTree = "<group>";
+		};
+		A5A032801E83EF120007887B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A5A032811E83EF300007887B /* MusicLibrary.swift */,
+				A5BDD1AF1E95CF4C0072E763 /* AllListenDetailModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A5B24E931E79CA03001D3118 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A5B24E961E79CA15001D3118 /* Controllers */,
+				A5B24E951E79CA10001D3118 /* Views */,
+				A5B24E941E79CA0C001D3118 /* Models */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		A5B24E941E79CA0C001D3118 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A5B24E971E79CA21001D3118 /* Level.swift */,
+				A5F176131E812B3300426372 /* GameData.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		A5B24E951E79CA10001D3118 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A5E6FE091E809675005F92DB /* TileView.swift */,
+				A5E6FE0B1E80A346005F92DB /* TargetView.swift */,
+				A5F1760F1E81166D00426372 /* StopWatchView.swift */,
+				A5F176111E8117D200426372 /* HudView.swift */,
+				A5F176151E812E8200426372 /* CounterLabelView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		A5B24E961E79CA15001D3118 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A5E6FE071E8090EC005F92DB /* GameController.swift */,
+				A5F1761A1E814E9700426372 /* AudioController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		A5B24E991E79CA4C001D3118 /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				A5B24E8D1E79C9F1001D3118 /* level1.plist */,
+				A5B24E8F1E79C9F8001D3118 /* level2.plist */,
+				A5B24E911E79C9FD001D3118 /* level3.plist */,
+			);
+			name = Levels;
+			sourceTree = "<group>";
+		};
+		A5B24E9A1E79CA68001D3118 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				A5B24E9E1E79CA84001D3118 /* Fonts */,
+				A5B24E9D1E79CA7D001D3118 /* Particles */,
+				A5B24E9C1E79CA76001D3118 /* Images */,
+				A5B24E9B1E79CA71001D3118 /* Audio */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		A5B24E9B1E79CA71001D3118 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				A5B24EAF1E79CEBC001D3118 /* win.mp3 */,
+				A5B24EB11E79CEC1001D3118 /* wrong.m4a */,
+				A5B24EB21E79CEC7001D3118 /* ding.mp3 */,
+			);
+			name = Audio;
+			sourceTree = "<group>";
+		};
+		A5B24E9C1E79CA76001D3118 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A5B24E9F1E79CAAC001D3118 /* board.jpg */,
+				A5B24EA11E79CAB1001D3118 /* board@2x.jpg */,
+				A5B24EA31E79CAB5001D3118 /* btn.png */,
+				A5B24EA51E79CAB9001D3118 /* tile@2x.png */,
+				A5B24EA71E79CABE001D3118 /* btn@2x.png */,
+				A5B24EA91E79CAC3001D3118 /* slot.png */,
+				A5B24EAB1E79CACA001D3118 /* slot@2x.png */,
+				A5B24EAD1E79CACF001D3118 /* tile.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		A5B24E9D1E79CA7D001D3118 /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				A5B24EB41E79CED2001D3118 /* particle.png */,
+			);
+			name = Particles;
+			sourceTree = "<group>";
+		};
+		A5B24E9E1E79CA84001D3118 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A5F176181E81337500426372 /* Helv Children.otf */,
+				A5F176191E81366C00426372 /* Comic_Andy.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		A5BDD1AA1E9586670072E763 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A5BDD1A81E9586510072E763 /* ListeningAllModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A5D3595E1E937190006CA4F4 /* FirstConllectionView */ = {
+			isa = PBXGroup;
+			children = (
+				A5D3595F1E9371BA006CA4F4 /* FIrstCollectionViewController.swift */,
+				A5D359611E9371C9006CA4F4 /* FirstCollectionViewCell.swift */,
+				A5D359631E9372FD006CA4F4 /* FirstStruct.swift */,
+			);
+			name = FirstConllectionView;
+			sourceTree = "<group>";
+		};
+		A5D359651E938AC3006CA4F4 /* SecondCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				A5D3596B1E939AEA006CA4F4 /* KindOfLearningViewController.swift */,
+			);
+			name = SecondCollectionView;
+			sourceTree = "<group>";
+		};
+		A5D3596A1E93993A006CA4F4 /* ApiController */ = {
+			isa = PBXGroup;
+			children = (
+				B250C4851E37A96B0055E433 /* MasterViewController.swift */,
+				A5CDE4241E706D9A00D720DA /* MainViewController.swift */,
+				B250C4831E37A8210055E433 /* Spot.swift */,
+				B250C4891E37AAF20055E433 /* keys.plist */,
+			);
+			name = ApiController;
+			sourceTree = "<group>";
+		};
+		A5D3596D1E93B33D006CA4F4 /* ListeningAllComponent */ = {
+			isa = PBXGroup;
+			children = (
+				A5BDD1AA1E9586670072E763 /* Model */,
+				A5A032791E83EE880007887B /* ListeningCenter */,
+				A5D359741E93B7EB006CA4F4 /* MainPodcastTableViewController.swift */,
+				A5BDD1A21E957B770072E763 /* ListeningApi.swift */,
+				A5BDD1A41E9580880072E763 /* MainPodcastTableViewCell.swift */,
+			);
+			name = ListeningAllComponent;
+			sourceTree = "<group>";
+		};
+		A5D3596E1E93B3CA006CA4F4 /* SpeakingAllComponent */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SpeakingAllComponent;
+			sourceTree = "<group>";
+		};
+		A5D3596F1E93B3D4006CA4F4 /* ReadingAllComponent */ = {
+			isa = PBXGroup;
+			children = (
+				A5D359781E93B864006CA4F4 /* MainReadingCollectionViewController.swift */,
+				A5D3597A1E93B911006CA4F4 /* ReadingViewController.swift */,
+				A5D3597C1E93B91F006CA4F4 /* AllWordsViewController.swift */,
+				A5AC6FC91E99886D00A4F0EF /* MainReadingCollectionViewCell.swift */,
+				A5B67BC91E99985C004614B2 /* SettingsViewController.swift */,
+				A5B67BCB1E999AB5004614B2 /* CustomSlider.swift */,
+				A5A2FCC61E9A64DA00D806E4 /* AllWordsTableViewCell.swift */,
+			);
+			name = ReadingAllComponent;
+			sourceTree = "<group>";
+		};
+		A5D359731E93B452006CA4F4 /* WritingAllComponent */ = {
+			isa = PBXGroup;
+			children = (
+				A5B24EB71E79CEFC001D3118 /* SentenceViewController.swift */,
+				A5B24E8A1E79C9D0001D3118 /* Config.swift */,
+				A5B24E991E79CA4C001D3118 /* Levels */,
+				A5B24E9A1E79CA68001D3118 /* Assets */,
+				A5B24E931E79CA03001D3118 /* Classes */,
+				A5D359801E93B9E1006CA4F4 /* RandomlySentencesViewController.swift */,
+				A5D359821E93BAD8006CA4F4 /* MainWritingCollectionViewController.swift */,
+			);
+			name = WritingAllComponent;
+			sourceTree = "<group>";
+		};
+		ABFA3D831AC47A6540022CE4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C59558399EFDB2256D5DF422 /* Pods-Razerr.debug.xcconfig */,
+				E5E34FEE4463BBE41BC3E148 /* Pods-Razerr.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B2C2B4171E350EAE00AFCE7A = {
 			isa = PBXGroup;
 			children = (
 				B2C2B4221E350EAE00AFCE7A /* Razerr */,
 				B2C2B4211E350EAE00AFCE7A /* Products */,
+				ABFA3D831AC47A6540022CE4 /* Pods */,
+				90AC8B82C90650CAB12DBF9C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,9 +414,17 @@
 		B2C2B4221E350EAE00AFCE7A /* Razerr */ = {
 			isa = PBXGroup;
 			children = (
+				A5D359731E93B452006CA4F4 /* WritingAllComponent */,
+				A5D3596F1E93B3D4006CA4F4 /* ReadingAllComponent */,
+				A5D3596E1E93B3CA006CA4F4 /* SpeakingAllComponent */,
+				A5D3596D1E93B33D006CA4F4 /* ListeningAllComponent */,
+				A5D3596A1E93993A006CA4F4 /* ApiController */,
+				A5D359651E938AC3006CA4F4 /* SecondCollectionView */,
+				A5D3595E1E937190006CA4F4 /* FirstConllectionView */,
+				A55938C91E826C1F00B5E0F8 /* NotificationsCenter */,
 				B2C2B4231E350EAE00AFCE7A /* AppDelegate.swift */,
-				B2C2B4251E350EAE00AFCE7A /* ViewController.swift */,
-				B2C2B4271E350EAE00AFCE7A /* Main.storyboard */,
+				B250C4871E37AA2E0055E433 /* Main.storyboard */,
+				A55938CC1E828F2A00B5E0F8 /* logo.png */,
 				B2C2B42A1E350EAE00AFCE7A /* Assets.xcassets */,
 				B2C2B42C1E350EAE00AFCE7A /* LaunchScreen.storyboard */,
 				B2C2B42F1E350EAE00AFCE7A /* Info.plist */,
@@ -71,9 +439,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B2C2B4321E350EAE00AFCE7A /* Build configuration list for PBXNativeTarget "Razerr" */;
 			buildPhases = (
+				617BC6B6C00FA9B647B91CB1 /* [CP] Check Pods Manifest.lock */,
 				B2C2B41C1E350EAE00AFCE7A /* Sources */,
 				B2C2B41D1E350EAE00AFCE7A /* Frameworks */,
 				B2C2B41E1E350EAE00AFCE7A /* Resources */,
+				3E9E8D88D054A24375E457C6 /* [CP] Embed Pods Frameworks */,
+				BA72814A8C0CFDB6CCCEC3CD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -90,12 +461,19 @@
 		B2C2B4181E350EAE00AFCE7A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					"#1",
+					"#2",
+					1,
+					2,
+				);
 				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Lukasz;
 				TargetAttributes = {
 					B2C2B41F1E350EAE00AFCE7A = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 74JLFJ25QN;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -123,35 +501,129 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5B24EA01E79CAAC001D3118 /* board.jpg in Resources */,
+				A5B24E921E79C9FD001D3118 /* level3.plist in Resources */,
+				A5B24EA41E79CAB5001D3118 /* btn.png in Resources */,
+				A5B24EB01E79CEBC001D3118 /* win.mp3 in Resources */,
+				A5B24EA21E79CAB1001D3118 /* board@2x.jpg in Resources */,
+				A5B24EB51E79CED2001D3118 /* particle.png in Resources */,
+				A5B24E901E79C9F8001D3118 /* level2.plist in Resources */,
+				B250C48A1E37AAF20055E433 /* keys.plist in Resources */,
 				B2C2B42E1E350EAE00AFCE7A /* LaunchScreen.storyboard in Resources */,
+				A5B24EA81E79CABE001D3118 /* btn@2x.png in Resources */,
+				A5B24EB31E79CEC7001D3118 /* ding.mp3 in Resources */,
+				A5B24EAA1E79CAC3001D3118 /* slot.png in Resources */,
+				A55938CD1E828F2A00B5E0F8 /* logo.png in Resources */,
+				A5B24E8E1E79C9F1001D3118 /* level1.plist in Resources */,
+				A5B24EAC1E79CACA001D3118 /* slot@2x.png in Resources */,
+				A5B24EAE1E79CACF001D3118 /* tile.png in Resources */,
+				A5B24EA61E79CAB9001D3118 /* tile@2x.png in Resources */,
 				B2C2B42B1E350EAE00AFCE7A /* Assets.xcassets in Resources */,
-				B2C2B4291E350EAE00AFCE7A /* Main.storyboard in Resources */,
+				B250C4881E37AA2E0055E433 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3E9E8D88D054A24375E457C6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Razerr/Pods-Razerr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		617BC6B6C00FA9B647B91CB1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BA72814A8C0CFDB6CCCEC3CD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Razerr/Pods-Razerr-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B2C2B41C1E350EAE00AFCE7A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2C2B4261E350EAE00AFCE7A /* ViewController.swift in Sources */,
+				A5AC6FCA1E99886D00A4F0EF /* MainReadingCollectionViewCell.swift in Sources */,
+				A5B24E981E79CA21001D3118 /* Level.swift in Sources */,
+				A5F176101E81166D00426372 /* StopWatchView.swift in Sources */,
+				A5F176161E812E8200426372 /* CounterLabelView.swift in Sources */,
+				A5A2FCC71E9A64DA00D806E4 /* AllWordsTableViewCell.swift in Sources */,
+				A5D359811E93B9E1006CA4F4 /* RandomlySentencesViewController.swift in Sources */,
+				A5D3596C1E939AEA006CA4F4 /* KindOfLearningViewController.swift in Sources */,
+				A5A032821E83EF300007887B /* MusicLibrary.swift in Sources */,
+				A5A0327B1E83EEDD0007887B /* ListeningTableViewController.swift in Sources */,
+				B250C4841E37A8210055E433 /* Spot.swift in Sources */,
+				A5D359601E9371BA006CA4F4 /* FIrstCollectionViewController.swift in Sources */,
+				A5A0327D1E83EEED0007887B /* PlayerViewController.swift in Sources */,
+				A5D359751E93B7EB006CA4F4 /* MainPodcastTableViewController.swift in Sources */,
+				A5BDD1B01E95CF4C0072E763 /* AllListenDetailModel.swift in Sources */,
 				B2C2B4241E350EAE00AFCE7A /* AppDelegate.swift in Sources */,
+				A5F176141E812B3300426372 /* GameData.swift in Sources */,
+				A5E6FE0C1E80A346005F92DB /* TargetView.swift in Sources */,
+				A5B24E8B1E79C9D0001D3118 /* Config.swift in Sources */,
+				A5C012961E9BC0AB00F9062A /* NotificationsWordsModel.swift in Sources */,
+				A5BDD1A51E9580880072E763 /* MainPodcastTableViewCell.swift in Sources */,
+				A5E6FE0A1E809675005F92DB /* TileView.swift in Sources */,
+				A5D359621E9371C9006CA4F4 /* FirstCollectionViewCell.swift in Sources */,
+				A5A0327F1E83EF090007887B /* ListeningTableViewCell.swift in Sources */,
+				A5B67BCC1E999AB5004614B2 /* CustomSlider.swift in Sources */,
+				B250C4861E37A96B0055E433 /* MasterViewController.swift in Sources */,
+				A5F1761B1E814E9700426372 /* AudioController.swift in Sources */,
+				A5D359641E9372FD006CA4F4 /* FirstStruct.swift in Sources */,
+				A5F176121E8117D200426372 /* HudView.swift in Sources */,
+				A5B67BCA1E99985C004614B2 /* SettingsViewController.swift in Sources */,
+				A5E6FE081E8090EC005F92DB /* GameController.swift in Sources */,
+				A5D3597D1E93B91F006CA4F4 /* AllWordsViewController.swift in Sources */,
+				A5D359831E93BAD8006CA4F4 /* MainWritingCollectionViewController.swift in Sources */,
+				A5D359791E93B864006CA4F4 /* MainReadingCollectionViewController.swift in Sources */,
+				A5BDD1AE1E95CF120072E763 /* ListeningDetailApi.swift in Sources */,
+				A5BDD1A91E9586510072E763 /* ListeningAllModel.swift in Sources */,
+				A5D3597B1E93B911006CA4F4 /* ReadingViewController.swift in Sources */,
+				A5B24EB81E79CEFC001D3118 /* SentenceViewController.swift in Sources */,
+				A5CDE4251E706D9A00D720DA /* MainViewController.swift in Sources */,
+				A55938CB1E826C5E00B5E0F8 /* NotificationsViewController.swift in Sources */,
+				A5BDD1A31E957B770072E763 /* ListeningApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B2C2B4271E350EAE00AFCE7A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B2C2B4281E350EAE00AFCE7A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B2C2B42C1E350EAE00AFCE7A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -256,11 +728,13 @@
 		};
 		B2C2B4331E350EAE00AFCE7A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C59558399EFDB2256D5DF422 /* Pods-Razerr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 74JLFJ25QN;
 				INFOPLIST_FILE = Razerr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lukiruki.Razerr;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.lukiruki.Razerr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -268,11 +742,13 @@
 		};
 		B2C2B4341E350EAE00AFCE7A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5E34FEE4463BBE41BC3E148 /* Pods-Razerr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 74JLFJ25QN;
 				INFOPLIST_FILE = Razerr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lukiruki.Razerr;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.lukiruki.Razerr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -297,6 +773,7 @@
 				B2C2B4341E350EAE00AFCE7A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
