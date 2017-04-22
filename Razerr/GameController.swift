@@ -22,10 +22,9 @@ class GameController {
     private var timer: Timer?
     
     fileprivate var data = GameData()
-    
     private var tiles = [TileView]()
     fileprivate var targets = [TargetView]()
-    
+    var sentence: Sentences!
     
     var amountLevel: Int = 0
     
@@ -33,28 +32,17 @@ class GameController {
         
     }
     
-    
-    
     func dealRandomAnagram () {
         
-        assert(level.anagrams.count > 0, "no level loaded")
-        
-        let randomIndex = randomNumber(minX:0, maxX:UInt32(level.anagrams.count-1))
-        let anagramPair = level.anagrams[randomIndex]
-        
-        let anagram1 = anagramPair[0] as! String
-        let anagram2 = anagramPair[1] as! String
+        assert(sentence != nil, "no sentence loaded")
         
         
-        let anagram1length = anagram1.characters.count
-        let anagram2length = anagram2.characters.count
-        
-        print("phrase1[\(anagram1length)]: \(anagram1)")
-        print("phrase2[\(anagram2length)]: \(anagram2)")
+        print("rightSentence \(sentence.rightSentences)")
+        print("falseSentence \(sentence.falseSentences)")
         
         
         // obliczamy wielkosc tile
-        let tileSide = ceil(ScreenWidth * 0.9 / CGFloat(max(anagram1length, anagram2length))) - TileMargin
+        let tileSide = ceil(ScreenWidth * 0.9 / CGFloat(max(sentence.rightSentences.characters.count, sentence.falseSentences.characters.count))) - TileMargin
         
         // wyszukujemy polozenie x lewe pierwszego tile
         var xOffset = (ScreenWidth - CGFloat(10.0) * (tileSide + TileMargin)) / 2.0
@@ -65,9 +53,8 @@ class GameController {
         //initialize target list
         targets = []
         
-        let tab2 = anagram2.components(separatedBy: " ")
+        let tab2 = sentence.rightSentences.components(separatedBy: " ")
         
-        print(tab2)
         for (index, letter) in tab2.enumerated() {
             if letter != " " {
                 let target = TargetView(letter: letter, sideLength: tileSide)
@@ -81,17 +68,16 @@ class GameController {
         
         tiles = []
         
-        let tab1 = anagram1.components(separatedBy: " ")
-          print(tab1)
+        let tab1 = sentence.falseSentences.components(separatedBy: " ")
+        
         for (index, letter) in tab1.enumerated() {
-            //3
+            
             if letter != " " {
                 let tile = TileView(letter: letter, sideLength: tileSide)
                 tile.randomize()
                 tile.dragDelegate = self
                 tile.center = CGPoint(x: xOffset + CGFloat(index)*(tileSide + 120), y: ScreenHeight/4*1.7)
                 
-                //4
                 tiles.append(tile)
                 gameView.addSubview(tile)
                
@@ -110,7 +96,6 @@ class GameController {
                 return
             }
         }
-        print("game over")
         amountLevel += 1
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "addlevel"), object: nil)
         
