@@ -2,9 +2,12 @@
 //  GameController.swift
 //  Razerr
 //
-//  Created by Aplikacje on 20/03/17.
+//  Created by Aplikacje on 16/04/17.
 //  Copyright © 2017 Lukasz. All rights reserved.
 //
+
+import Foundation
+import UIKit
 
 import Foundation
 import UIKit
@@ -22,12 +25,12 @@ class GameController {
     
     private var tiles = [TileView]()
     fileprivate var targets = [TargetView]()
-    //fileprivate var audioController: AudioController
     
+    
+    var amountLevel: Int = 0
     
     init() {
-//        self.audioController = AudioController()
-//        self.audioController.preloadAudioEffects(effectFileNames: AudioEffectFiles)
+        
     }
     
     
@@ -38,14 +41,14 @@ class GameController {
         
         let randomIndex = randomNumber(minX:0, maxX:UInt32(level.anagrams.count-1))
         let anagramPair = level.anagrams[randomIndex]
-    
+        
         let anagram1 = anagramPair[0] as! String
         let anagram2 = anagramPair[1] as! String
         
         
         let anagram1length = anagram1.characters.count
         let anagram2length = anagram2.characters.count
-     
+        
         print("phrase1[\(anagram1length)]: \(anagram1)")
         print("phrase2[\(anagram2length)]: \(anagram2)")
         
@@ -54,7 +57,7 @@ class GameController {
         let tileSide = ceil(ScreenWidth * 0.9 / CGFloat(max(anagram1length, anagram2length))) - TileMargin
         
         // wyszukujemy polozenie x lewe pierwszego tile
-        var xOffset = (ScreenWidth - CGFloat(max(anagram1length, anagram2length)) * (tileSide + TileMargin)) / 2.0
+        var xOffset = (ScreenWidth - CGFloat(10.0) * (tileSide + TileMargin)) / 2.0
         
         // centrujemy nasza pozycje dla tile, ktora ma wartosc od lewego x wiec trzeba to wycentrowac
         xOffset += tileSide / 2.0
@@ -62,37 +65,40 @@ class GameController {
         //initialize target list
         targets = []
         
-        let tab1 = Array(anagram2.characters)
+        let tab2 = anagram2.components(separatedBy: " ")
         
-        for (index, letter) in tab1.enumerated() {
+        print(tab2)
+        for (index, letter) in tab2.enumerated() {
             if letter != " " {
                 let target = TargetView(letter: letter, sideLength: tileSide)
-                target.center = CGPoint(x: xOffset + CGFloat(index)*(tileSide + TileMargin), y: ScreenHeight/3)
+                target.center = CGPoint(x: xOffset + CGFloat(index)*(tileSide + 120), y: ScreenHeight/5)
                 
-                gameView.addSubview(target)
                 targets.append(target)
+                gameView.addSubview(target)
+                
             }
         }
         
         tiles = []
         
-        let tab = Array(anagram1.characters)
-        
-        for (index, letter) in tab.enumerated() {
+        let tab1 = anagram1.components(separatedBy: " ")
+          print(tab1)
+        for (index, letter) in tab1.enumerated() {
             //3
             if letter != " " {
                 let tile = TileView(letter: letter, sideLength: tileSide)
                 tile.randomize()
                 tile.dragDelegate = self
-                tile.center = CGPoint(x: xOffset + CGFloat(index)*(tileSide + TileMargin), y: ScreenHeight/4*3)
+                tile.center = CGPoint(x: xOffset + CGFloat(index)*(tileSide + 120), y: ScreenHeight/4*1.7)
                 
                 //4
-                gameView.addSubview(tile)
                 tiles.append(tile)
+                gameView.addSubview(tile)
+               
             }
         }
         
-        self.startStopwatch()
+        
     }
     
     
@@ -104,9 +110,20 @@ class GameController {
                 return
             }
         }
-        print("Game Over")
-        self.stopStopwatch()
-  //      audioController.playSound(name: SoundWin)
+        print("game over")
+        amountLevel += 1
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "addlevel"), object: nil)
+        
+    }
+    
+    func clearBoard() {
+        tiles.removeAll(keepingCapacity: false)
+        targets.removeAll(keepingCapacity: false)
+        
+        for view in gameView.subviews  {
+            view.removeFromSuperview()
+        }
+      
     }
     
     func successTile(tileView: TileView, targetView: TargetView) {
@@ -133,33 +150,14 @@ class GameController {
         tileView.randomize()
         
         UIView.animate(withDuration: 0.35, delay: 0.00, options: .curveEaseOut, animations: {
-        
+            
             tileView.center = CGPoint(x: tileView.center.x + CGFloat(randomNumber(minX:0, maxX:40)-20), y:  tileView.center.y + CGFloat(randomNumber(minX:20, maxX:30)))
             
         }, completion: nil)
     }
     
-    func startStopwatch() {
-        
-        secondsLeft = level.timeToSolve
-        hud.stopwatch.setSeconds(seconds: secondsLeft)
-        
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(GameController.tick(timer:)), userInfo: nil, repeats: true)
-    }
     
-    @objc func tick(timer: Timer) {
-        secondsLeft -= 1
-        hud.stopwatch.setSeconds(seconds: secondsLeft)
-        if secondsLeft == 0 {
-            self.stopStopwatch()
-        }
-    }
     
-    func stopStopwatch() {
-        timer?.invalidate()
-        timer = nil
-    }
-
 }
 
 
@@ -180,23 +178,20 @@ extension GameController: TileDragDelegateProtocol {
         if let targetView = targetView {
             
             if targetView.letter == tileView.letter {
-                print("Success! You should place the tile here!")
+               
                 
                 successTile(tileView: tileView, targetView: targetView)
                 data.points += level.pointsPerTitle
-                hud.gamePoints.setValue(newValue: data.points, duration: 0.5)
-           //     audioController.playSound(name: SoundDing)
+                hud.gamePoints.value = data.points
                 
             } else {
-                print("Failure. Let the player know this tile doesn't belong here")
-                
+               
                 failureTile(tileView: tileView)
                 data.points -= level.pointsPerTitle/2
-                hud.gamePoints.setValue(newValue: data.points, duration: 0.5)
-            //    audioController.playSound(name: SoundWrong)
+                hud.gamePoints.value = data.points
             }
             
-          self.checkIfSuccess()  
+            self.checkIfSuccess()
         }
     }
     

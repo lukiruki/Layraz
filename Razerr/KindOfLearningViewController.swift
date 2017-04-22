@@ -11,12 +11,20 @@ import UIKit
 class KindOfLearningViewController: UIViewController {
 
    
+    var name: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if let name = name {
+            self.title = name
+        }
     }
 
+    
+    @IBAction func backButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func listeningButton(_ sender: UIButton) {
     }

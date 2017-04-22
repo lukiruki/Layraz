@@ -45,18 +45,19 @@ class FIrstCollectionViewController: UICollectionViewController {
     }
 
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showDetail" {
-//            if let indexPath = collectionView?.indexPathsForSelectedItems {
-//                let name = names[indexPath[0].row]
-//                    let destinationController = segue.destination as! SecondCollectionViewController
-//                    destinationController.name = name.name
-//                    collectionView?.deselectItem(at: indexPath[0], animated: false)
-//            }
-//            
-//            
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            if let indexPath = collectionView?.indexPathsForSelectedItems {
+                let name = names[indexPath[0].row]
+                    let destinationController = segue.destination as! UINavigationController
+                let targetDestination = destinationController.topViewController as! KindOfLearningViewController
+                    targetDestination.name = name.name
+                    collectionView?.deselectItem(at: indexPath[0], animated: false)
+            }
+            
+            
+        }
+    }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -67,5 +68,19 @@ class FIrstCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         names[indexPath.row].isSelected = false
     }
+    
+    @IBAction func Logouut(_ sender: Any) {
+        UserDefaults.standard.removeObject(forKey: "objectId")
+        UserDefaults.standard.removeObject(forKey: "sessionToken")
+        UserDefaults.standard.removeObject(forKey: "username")
+        UserDefaults.standard.synchronize()
+        print("Uzytownik zostal wylogowany")
+        
+        let sb:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let controllerLogin: UIViewController = sb.instantiateViewController(withIdentifier: "firstView")
+        self.present(controllerLogin, animated: true, completion: nil)
+
+    }
+  
     
 }

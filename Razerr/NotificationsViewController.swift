@@ -16,40 +16,28 @@ class NotificationsViewController: UIViewController, UIPickerViewDelegate,UIPick
     
     @IBOutlet weak var pickerhoursMorning: UIPickerView!
     @IBOutlet weak var pickerminuteMorning: UIPickerView!
-    @IBOutlet weak var pickerhoursAfternoon: UIPickerView!
-    @IBOutlet weak var pickerminuteAfternoon: UIPickerView!
     
-    @IBOutlet weak var pickerwords: UIPickerView!
-    @IBOutlet weak var amountCompleteDaysImage: UIImageView!
-    @IBOutlet weak var numberhoursstudyImage: UIImageView!
-    @IBOutlet weak var numberofWordsImage: UIImageView!
+    @IBOutlet weak var pickerWordsminute: UIPickerView!
     
-   
     @IBOutlet weak var hoursmorningLabel: UILabel!
     @IBOutlet weak var minutemorningLabel: UILabel!
     @IBOutlet weak var minutewordsLabel: UILabel!
-    @IBOutlet weak var minuteafternoonLabel: UILabel!
-    @IBOutlet weak var hoursafternoonLabel: UILabel!
     
     @IBOutlet weak var morningButton: UIButton!
-    @IBOutlet weak var afternoonButton: UIButton!
     @IBOutlet weak var wordsButton: UIButton!
     
-    @IBOutlet weak var backgroundImage: UIImageView!
-    
+  
     var hoursMorning: [String] = []
     var minuteMorning: [String] = []
-    var hoursAfternoon: [String] = []
-    var minuteAfternoon: [String] = []
     var minutewords: [String] = []
     var blurEffectView: UIVisualEffectView?
     
+    let center = UNUserNotificationCenter.current()
     var mainApi = ListeningApi()
     var listenWordsNotifications: [NotificationsWordsModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         getAllWordsWithAlamofire()
         
@@ -63,31 +51,28 @@ class NotificationsViewController: UIViewController, UIPickerViewDelegate,UIPick
     
     private func hiddenButton() {
         morningButton.isEnabled = false
-        afternoonButton.isEnabled = false
-        //wordsButton.isEnabled = false
+        
     }
     
     private func setDelegateandDataSource() {
     
         self.pickerhoursMorning.delegate = self
         self.pickerhoursMorning.dataSource = self
+        morningButton.layer.cornerRadius = 3.0
         
         self.pickerminuteMorning.delegate = self
         self.pickerminuteMorning.dataSource = self
         
-        self.pickerhoursAfternoon.delegate = self
-        self.pickerhoursAfternoon.dataSource = self
+        self.pickerWordsminute.delegate = self
+        self.pickerWordsminute.dataSource = self
+        wordsButton.layer.cornerRadius = 3.0
         
-        self.pickerminuteAfternoon.delegate = self
-        self.pickerminuteAfternoon.dataSource = self
 
     }
     
     private func initializeArray(array: Array<String>) {
-        hoursMorning = ["05","06","07","08","09","10","11","12"]
+        hoursMorning = ["05","06","07","08","09","10","11","12","13"]
         minuteMorning = array
-        hoursAfternoon = ["08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"]
-        minuteAfternoon = array
         minutewords = ["10","20","30","40","50","60","90","120"]
 
     }
@@ -113,21 +98,10 @@ class NotificationsViewController: UIViewController, UIPickerViewDelegate,UIPick
             return hoursMorning.count
         } else if pickerView.tag == 2 {
             return minuteMorning.count
-        } else if  pickerView.tag == 3 {
-            return hoursAfternoon.count
-        } else if  pickerView.tag == 4 {
-            return minuteAfternoon.count
         }
         return minutewords.count
     }
 
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-      
-    }
-    
-    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
        return 1
@@ -139,12 +113,20 @@ class NotificationsViewController: UIViewController, UIPickerViewDelegate,UIPick
             return hoursMorning[row]
         } else if pickerView.tag == 2 {
             return minuteMorning[row]
-        } else if  pickerView.tag == 3 {
-            return hoursAfternoon[row]
-        } else if  pickerView.tag == 4 {
-            return minuteAfternoon[row]
         }
         return minutewords[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        var attributedString: NSAttributedString!
+        if pickerView.tag == 1 {
+            attributedString = NSAttributedString(string: hoursMorning[row], attributes: [NSForegroundColorAttributeName : UIColor.white])
+        } else if pickerView.tag == 2 {
+            attributedString = NSAttributedString(string: minuteMorning[row], attributes: [NSForegroundColorAttributeName : UIColor.white])
+        } else if pickerView.tag == 3 {
+            attributedString = NSAttributedString(string: minutewords[row], attributes: [NSForegroundColorAttributeName : UIColor.white])
+        }
+        return attributedString
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -153,28 +135,20 @@ class NotificationsViewController: UIViewController, UIPickerViewDelegate,UIPick
         } else if pickerView.tag == 2 {
            minutemorningLabel.text = minuteMorning[row]
             morningButton.isEnabled = true
-        } else if  pickerView.tag == 3 {
-           hoursafternoonLabel.text = hoursAfternoon[row]
-               afternoonButton.isEnabled = true
-        } else if  pickerView.tag == 4 {
-           minuteafternoonLabel.text = minuteAfternoon[row]
-          
-        } else if pickerView.tag == 5 {
+        } else if pickerView.tag == 3 {
            minutewordsLabel.text =  minutewords[row]
-         //   wordsButton.isEnabled = true
+            wordsButton.isEnabled = true
         }
         
     }
     
     
     @IBAction func TurnMorning(_ sender: Any) {
-        let center = UNUserNotificationCenter.current()
+        
         
         let content = UNMutableNotificationContent()
-        content.title = listenWordsNotifications[0].polishword
-        content.body = listenWordsNotifications[0].englishword
-        content.categoryIdentifier = "alarm"
-        content.userInfo = ["customData": "fizzbuzz"]
+        content.title = "Witaj w mojej aplikacji"
+        content.body = "Mozesz uaktywnic opcję powtarzania słówek lub uaktywnienia pakietu do nauki."
         content.sound = UNNotificationSound.default()
         
                 if let path = Bundle.main.path(forResource: "logo", ofType: "png") {
@@ -196,24 +170,25 @@ class NotificationsViewController: UIViewController, UIPickerViewDelegate,UIPick
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
+        
+        let morningIndentifier = "morningIdentifier"
+        let setWords = UNNotificationAction(identifier: "setWordsandPakietforMorning", title: "Ustaw słówka oraz pakiet", options: [.foreground])
+        let doneButton = UNNotificationAction(identifier: "freefromLearningMorning", title: "Dzisiaj mam wolne od nauki", options: [])
+        let category = UNNotificationCategory(identifier: morningIndentifier, actions: [setWords,doneButton], intentIdentifiers: [], options: [])
+        UNUserNotificationCenter.current().setNotificationCategories([category])
+        content.categoryIdentifier = morningIndentifier
+       
         let request = UNNotificationRequest(identifier: "Morning", content: content, trigger: trigger)
         center.add(request)
-        print("Nacisnales przycisk")
+        print("Nacisnales przycisk Morning")
 
     }
     
-   
-   
-    
-    @IBAction func TurnOnOffAfternoonButton(_ sender: UIButton) {
-        
-        let center = UNUserNotificationCenter.current()
+    func WordsNotifications(english: String, polish: String){
         
         let content = UNMutableNotificationContent()
-        content.title = "asdsadsadasd"
-        content.body = "blalalalalalalalalalal."
-        content.categoryIdentifier = "alarm"
-        content.userInfo = ["customData": "fizzbuzz"]
+        content.title = polish
+        content.body = english
         content.sound = UNNotificationSound.default()
         
         if let path = Bundle.main.path(forResource: "logo", ofType: "png") {
@@ -227,21 +202,102 @@ class NotificationsViewController: UIViewController, UIPickerViewDelegate,UIPick
             }
         }
         
-        var dateComponents = DateComponents()
-        if (!(hoursafternoonLabel.text?.isEmpty)! && !(minuteafternoonLabel.text?.isEmpty)!){
-            dateComponents.hour = Int(hoursafternoonLabel.text!)
-            dateComponents.minute = Int(minuteafternoonLabel.text!)
-        }
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+//        var dateComponents = DateComponents()
+//        if (!(hoursmorningLabel.text?.isEmpty)! && !(minutemorningLabel.text?.isEmpty)!){
+//            dateComponents.hour = Int(hoursmorningLabel.text!)
+//            dateComponents.minute = Int(minutemorningLabel.text!)
+//        }
         
-        let request = UNNotificationRequest(identifier: "Dane", content: content, trigger: trigger)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 61, repeats: true)
+        
+        let categoryIndentifier = "wordIdentifier"
+        let makeWords = UNNotificationAction(identifier: "makeWords", title: "Zapamietaj mnie", options: [])
+        let addRemind = UNNotificationAction(identifier: "addRemind", title: "Powtórz słówko", options: [])
+        let category = UNNotificationCategory(identifier: categoryIndentifier, actions: [makeWords,addRemind], intentIdentifiers: [], options: [])
+        UNUserNotificationCenter.current().setNotificationCategories([category])
+        content.categoryIdentifier = categoryIndentifier
+        let request = UNNotificationRequest(identifier: "Words", content: content, trigger: trigger)
+        center.add(request)
+        print("Nacisnales przycisk Words")
+    }
+    
+    
+    
+    @IBAction func TurnWords(_ sender: Any) {
+        wordsButton.layer.backgroundColor = UIColor(red: 216.0/255.0, green: 74.0/255.0, blue: 32.0/255.0, alpha: 1.0).cgColor
+        let allincrease = UserDefaults.standard.integer(forKey: "allincreaseWords")
+        var selected = setSelectedWordsforIndex(increase: allincrease)
+        WordsNotifications(english: selected.0, polish: selected.1)
+    }
+    
+   
+   
+    
+    func setPacketNotifications(increase: Int) {
+    
+        print("Jestes w pakiecie")
+        let allincrease = UserDefaults.standard.integer(forKey: "allincreaseWords")
+        var setAllWordsforUser = allincrease + increase
+        UserDefaults.standard.set(setAllWordsforUser, forKey: "allincreaseWords")
+        
+        
+        center.removeAllPendingNotificationRequests()
+        center.removeAllDeliveredNotifications()
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Pakiet na dzisiejszy dzień"
+        content.body = "Witam, proszę przejsc do nauki."
+        content.sound = UNNotificationSound.default()
+        
+        if let path = Bundle.main.path(forResource: "logo", ofType: "png") {
+            let url = URL(fileURLWithPath: path)
+            
+            do {
+                let attachment = try UNNotificationAttachment(identifier: "logo", url: url, options: nil)
+                content.attachments = [attachment]
+            } catch {
+                print("The attachment was not loaded.")
+            }
+        }
+    
+        
+        let packetIndentifier = "packetIdentifier"
+        let setWords = UNNotificationAction(identifier: "gotToPacketLearning", title: "Przejdz do nauki z pakietu", options: [.foreground])
+        let category = UNNotificationCategory(identifier: packetIndentifier, actions: [setWords], intentIdentifiers: [], options: [])
+        UNUserNotificationCenter.current().setNotificationCategories([category])
+        content.categoryIdentifier = packetIndentifier
+        
+        let request = UNNotificationRequest(identifier: "Packet", content: content, trigger: nil)
         center.add(request)
         print("Nacisnales przycisk")
 
     }
     
     
-
+    func setSelectedWordsforIndex(increase: Int) -> (String,String){
+        var userDefaults = UserDefaults.standard
+        let decoded  = userDefaults.object(forKey: "teams") as! Data
+        let decodedTeams = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [NotificationsWordsModel]
+        return(decodedTeams[increase].englishword, decodedTeams[increase].polishword)
+    }
+    
+    
+    
+    
+    func makeforRemberWords() {
+        let increase = UserDefaults.standard.integer(forKey: "increaseWords")
+        print("Increase wynosi",increase)
+        if increase == 2 {
+            setPacketNotifications(increase: increase)
+            UserDefaults.standard.set(0, forKey: "increaseWords")
+        } else {
+            var selected = setSelectedWordsforIndex(increase: increase)
+            WordsNotifications(english: selected.0, polish: selected.1)
+        }
+    }
+    func makeforNotRemeber() {
+        print("Lepiej powtorz")
+    }
    
     
     func getAllWordsWithAlamofire() {
@@ -273,6 +329,11 @@ class NotificationsViewController: UIViewController, UIPickerViewDelegate,UIPick
                     }
                     DispatchQueue.main.async {
                         print("Lista w alamo", self.listenWordsNotifications.count)
+                        
+                        var wordsDefaults = UserDefaults.standard
+                        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: self.listenWordsNotifications)
+                        wordsDefaults.set(encodedData, forKey: "teams")
+                        wordsDefaults.synchronize()
                         
                     }
                     

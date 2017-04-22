@@ -1,10 +1,11 @@
 //
 //  Config.swift
-//  Anagrams
+//  Razerr
 //
-//  Created by Caroline on 1/08/2014.
-//  Copyright (c) 2013 Underplot ltd. All rights reserved.
+//  Created by Aplikacje on 22/04/17.
+//  Copyright © 2017 Lukasz. All rights reserved.
 //
+
 
 import Foundation
 import UIKit
@@ -17,8 +18,8 @@ let TileMargin: CGFloat = 20.0
 
 //Random number generator
 func randomNumber(minX: UInt32, maxX: UInt32) -> Int {
-  let result = (arc4random() % (maxX - minX + 1)) + minX
-  return Int(result)
+    let result = (arc4random() % (maxX - minX + 1)) + minX
+    return Int(result)
 }
 
 
@@ -30,3 +31,4 @@ let SoundDing = "ding.mp3"
 let SoundWrong = "wrong.m4a"
 let SoundWin = "win.mp3"
 let AudioEffectFiles = [SoundDing, SoundWrong, SoundWin]
+

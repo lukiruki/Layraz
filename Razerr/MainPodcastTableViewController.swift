@@ -50,6 +50,10 @@ class MainPodcastTableViewController: UITableViewController {
         
     }
     
+    @IBAction func backButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1

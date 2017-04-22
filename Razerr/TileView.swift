@@ -2,7 +2,7 @@
 //  TileView.swift
 //  Razerr
 //
-//  Created by Aplikacje on 21/03/17.
+//  Created by Aplikacje on 16/04/17.
 //  Copyright © 2017 Lukasz. All rights reserved.
 //
 
@@ -14,11 +14,11 @@ protocol TileDragDelegateProtocol {
 }
 
 class TileView: UIImageView {
-
+    
     // zapisujemy obecna transformacje obiektu Image tzn jest to poczatkowa wielkosc jaka posiada obrazek, ktory pozniej bedzie powiekszony przy przeciaganiu
     private var tempTransform: CGAffineTransform = CGAffineTransform.identity
     
-    var letter: Character
+    var letter: String
     
     private var xOffset: CGFloat = 0.0
     private var yOffset: CGFloat = 0.0
@@ -30,26 +30,26 @@ class TileView: UIImageView {
     required init(coder aDecoder:NSCoder) {
         fatalError("use init(letter:, sideLength:")
     }
-
-    init(letter: Character, sideLength: CGFloat) {
     
+    init(letter: String, sideLength: CGFloat) {
+        
         
         self.letter = letter
-        
+        print("letter in tileView",letter)
         let image = UIImage(named: "tile")!
         
         super.init(image:image)
-    
+        
         let scale = sideLength / image.size.width
         
-        self.frame = CGRect(x: 0, y: 0, width: image.size.width * scale, height: image.size.height * scale)
+        self.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
         
         let letterLabel = UILabel(frame: self.bounds)
         letterLabel.textAlignment = NSTextAlignment.center
         letterLabel.textColor = UIColor.white
         letterLabel.backgroundColor = UIColor.clear
         letterLabel.text = String(letter).uppercased()
-        letterLabel.font = UIFont(name: "Verdana-Bold", size: 78.0 * scale)
+        letterLabel.font = UIFont(name: "Verdana-Bold", size: 25.0)
         self.addSubview(letterLabel)
         
         self.isUserInteractionEnabled = true
@@ -71,6 +71,7 @@ class TileView: UIImageView {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first as? UITouch! {
+            print("Touched",self.letter)
             let point = touch.location(in: self.superview)
             xOffset = point.x - self.center.x
             yOffset = point.y - self.center.y
@@ -98,7 +99,7 @@ class TileView: UIImageView {
         self.transform = tempTransform
     }
     
-//    iOS calls touchesCancelled(_:withEvent:) in certain special situations, like when the app receives a low memory warning or if a notification brings up a modal alert. Your method will ensure that the tile’s display is properly restored.
+    //    iOS calls touchesCancelled(_:withEvent:) in certain special situations, like when the app receives a low memory warning or if a notification brings up a modal alert. Your method will ensure that the tile’s display is properly restored.
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.transform = tempTransform
         self.layer.shadowOpacity = 0.0
@@ -117,5 +118,5 @@ class TileView: UIImageView {
         self.center = CGPoint(x: self.center.x, y: self.center.y + yOffset)
     }
     
-
+    
 }

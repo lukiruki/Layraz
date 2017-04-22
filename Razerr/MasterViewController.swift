@@ -11,23 +11,37 @@ import Alamofire
 import SwiftyJSON
 
 class MasterViewController: UIViewController {
-
-    var spots = [Spot]()
-    
-    
     
     @IBOutlet weak var usernameTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//            getController()
-//            updateController()
+
+        usernameTextField.layer.cornerRadius = 8.0
+        usernameTextField.layer.masksToBounds = true
+        usernameTextField.layer.borderColor = UIColor( red: 255/255, green: 255/255, blue:255/255, alpha: 1.0 ).cgColor
+        usernameTextField.layer.borderWidth = 2.0
+        
+        passwordTextField.layer.cornerRadius = 8.0
+        passwordTextField.layer.masksToBounds = true
+        passwordTextField.layer.borderColor = UIColor( red: 255/255, green: 255/255, blue:255/255, alpha: 1.0 ).cgColor
+        passwordTextField.layer.borderWidth = 2.0
+        
+        
+        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(MasterViewController.handleSwipeDownGesture(_:)))
+        swipeDownGesture.direction = UISwipeGestureRecognizerDirection.down
+        view.addGestureRecognizer(swipeDownGesture)
        
     }
 
+    func handleSwipeDownGesture(_ gestureRecognizer: UISwipeGestureRecognizer) {
+        passwordTextField.resignFirstResponder()
+        usernameTextField.resignFirstResponder()
+    }
+    
+    
     @IBAction func LoginButton(_ sender: UIButton) {
         
         if(usernameTextField.text == nil || (usernameTextField.text?.isEmpty)!) {
@@ -41,8 +55,8 @@ class MasterViewController: UIViewController {
         }
         
         let headers: HTTPHeaders = [
-            "X-Parse-Application-Id": "pb0CI3Y8T9cDcV9SXszZ5KZsFhlPmFNQPjVQz19X",
-            "X-Parse-REST-API-Key": "OhBTU6qlpvotBRLuc1qWfiWs9YPugDA4tuSaSZBD",
+            "X-Parse-Application-Id": "DvGa4MJJh3REJP3Q8tAqZDzuAbVPpHW7ZD5k5R25",
+            "X-Parse-REST-API-Key": "Y0mspj596kgiy2QpVKO7ohfIoEF06fYw272wT1Xt",
             "X-Parse-Revocable-Session" : "1",
             "Accept": "application/json"
         ]
@@ -95,45 +109,7 @@ class MasterViewController: UIViewController {
     
     
     
-    @IBAction func RegisterButton(_ sender: UIButton) {
-        
-        if(usernameTextField.text == nil || (usernameTextField.text?.isEmpty)!) {
-            print("Username required")
-            return
-        }
-       
-        if(passwordTextField.text == nil || (passwordTextField.text?.isEmpty)!) {
-            print("Password required")
-            return
-        }
-        
-        let headers: HTTPHeaders = [
-            "X-Parse-Application-Id": "pb0CI3Y8T9cDcV9SXszZ5KZsFhlPmFNQPjVQz19X",
-            "X-Parse-REST-API-Key": "OhBTU6qlpvotBRLuc1qWfiWs9YPugDA4tuSaSZBD",
-            "Accept": "application/json"
-        ]
-        
-        let params = ["username": usernameTextField.text!,
-                      "password": passwordTextField.text!,
-                      ] as [String : Any]
-        
-        let apiMethod = "https://parseapi.back4app.com/users"
-        
-        Alamofire.request(apiMethod, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseString { (response) in
-            
-            print(response);
-            
-            let alertController = UIAlertController(title: "REGISTRATION SUCCESSFUL!", message: nil, preferredStyle: .alert);
-            
-            alertController.addAction(UIAlertAction(title: "OK", style: .default,handler: nil));
-            
-        
-            
-            self.present(alertController, animated: true, completion: nil)
-            
-        }
-        
-    }
+  
    
     func getController() {
         

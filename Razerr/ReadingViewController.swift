@@ -71,6 +71,10 @@ class ReadingViewController: UIViewController, AVSpeechSynthesizerDelegate,Setti
         setInitialFont()
     }
     
+    @IBAction func backButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "idSegueSettings" {
             let settingsViewController = segue.destination as! SettingsViewController

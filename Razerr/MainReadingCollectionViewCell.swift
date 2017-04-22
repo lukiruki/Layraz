@@ -19,4 +19,6 @@ class MainReadingCollectionViewCell: UICollectionViewCell {
         self.readingImage.layer.masksToBounds = true
         self.readingImage.layer.cornerRadius  = CGFloat(roundf(Float(self.readingImage.frame.size.width/2.0)))
     }
+    
+    
 }

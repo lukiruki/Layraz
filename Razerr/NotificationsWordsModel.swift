@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NotificationsWordsModel {
+class NotificationsWordsModel: NSObject, NSCoding {
     
 
     var polishword: String = ""
@@ -20,6 +20,16 @@ class NotificationsWordsModel {
         self.englishword = englishword
     }
     
+    required convenience init(coder aDecoder: NSCoder) {
+        let polishword = aDecoder.decodeObject(forKey: "polishword") as! String
+        let englishword = aDecoder.decodeObject(forKey: "englishword") as! String
+        self.init(polishword: polishword, englishword: englishword)
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(polishword, forKey: "polishword")
+        aCoder.encode(englishword, forKey: "englishword")
+    }
     
     
 }

@@ -5,28 +5,12 @@
 	<key>anagrams</key>
 	<array>
 		<array>
-			<string>truth is</string>
-			<string>it hurts</string>
+			<string>I love my mum</string>
+			<string>mum love i my</string>
 		</array>
 		<array>
-			<string>western union</string>
-			<string>no wire unsent</string>
-		</array>
-		<array>
-			<string>a telescope</string>
-			<string>to see place</string>
-		</array>
-		<array>
-			<string>astronomers</string>
-			<string>moonstarers</string>
-		</array>
-		<array>
-			<string>this ear</string>
-			<string>it hears</string>
-		</array>
-		<array>
-			<string>schoolmaster</string>
-			<string>the classroom</string>
+			<string>I want buy new car</string>
+			<string>want I buy car new</string>
 		</array>
 	</array>
 	<key>timeToSolve</key>

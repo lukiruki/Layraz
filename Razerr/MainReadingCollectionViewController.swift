@@ -21,8 +21,7 @@ class MainReadingCollectionViewController: UICollectionViewController {
 
         collectionView?.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.2)
        
-        collectionView?.layer.cornerRadius = 5.0
-        collectionView?.clipsToBounds = true
+      
        
     }
 
@@ -49,6 +48,8 @@ class MainReadingCollectionViewController: UICollectionViewController {
     }
 
     
-    
+    @IBAction func backButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 
 }

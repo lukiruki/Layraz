@@ -23,20 +23,7 @@ class MainViewController: UIViewController {
     
 
     
-    @IBAction func Logout(_ sender: Any) {
-        
-        UserDefaults.standard.removeObject(forKey: "objectId")
-        UserDefaults.standard.removeObject(forKey: "sessionToken")
-        UserDefaults.standard.removeObject(forKey: "username")
-        UserDefaults.standard.synchronize()
-        print("Uzytownik zostal wylogowany")
-        
-        let sb:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let controllerLogin: UIViewController = sb.instantiateViewController(withIdentifier: "firstView")
-        self.present(controllerLogin, animated: true, completion: nil)
-
-        
-    }
+   
     
 
 }
