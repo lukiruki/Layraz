@@ -7,14 +7,20 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class ListeningTableViewController: UITableViewController {
 
-    var apiDetail = ListeningDetailApi()
-    
+ 
+    var helperDetailModel: [AllListeningDetailModel] = []
     var listenDetailModel: [AllListeningDetailModel] = []
     
     var selectlistenDetailModel: AllListeningDetailModel?
+    
+    var objectid: String = ""
+    var image: UIImage!
+    var kindofListening: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,21 +32,7 @@ class ListeningTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 36.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
-       apiDetail.getAllComedyListenData()
-        
-        
-        let delayQueue = DispatchQueue(label: "com.appcoda.delayqueue", qos: .userInitiated)
-        
-        
-        let additionalTime: DispatchTimeInterval = .seconds(2)
-        
-        delayQueue.asyncAfter(deadline: .now() + additionalTime) {
-            self.listenDetailModel = self.apiDetail.getAllData()
-            self.tableView.reloadData()
-            
-        }
-        
-       
+        getAllDetailDatatoListen()
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -65,46 +57,6 @@ class ListeningTableViewController: UITableViewController {
         
         cell.songTitleLabel.text = listenItem.title
         
-        /////
-        
-//        var image = UIImage()
-//        
-//        let imageUrl = URL(string: listenItem.imageString)
-//        print(imageUrl)
-//        let session = URLSession(configuration: .default)
-//        
-//        let downloadImage = session.dataTask(with: imageUrl!) { (data, response, error) in
-//            
-//            if let e = error {
-//                print("Error downloading image",e)
-//            } else {
-//                
-//                if let res = response as? HTTPURLResponse {
-//                    print("Downloaded cat picture with response code \(res.statusCode)")
-//                    if let imageData = data {
-//                        DispatchQueue.main.async {
-//                            print("udalos ie pobrac")
-//                            image = UIImage(data: imageData)!
-//                            
-//                            cell.coverImageView.image = image
-//                            cell.coverImageView.layer.cornerRadius = 30.0
-//                            cell.coverImageView.clipsToBounds = true
-//                        }
-//                        
-//                    }else {
-//                        print("Couldn't get image: Image is nil")
-//                    }
-//                } else {
-//                    print("Couldn't get response code for some reason")
-//                }
-//                
-//            }
-//        }
-//        
-//        downloadImage.resume()
-        
-    
-        
          cell.backgroundColor = UIColor.clear
         
         return cell
@@ -122,9 +74,69 @@ class ListeningTableViewController: UITableViewController {
             let indexPath = tableView.indexPathForSelectedRow!
             selectlistenDetailModel = listenDetailModel[indexPath.row]
             playerVC.selectlistenDetailModel = selectlistenDetailModel
-           // playerVC.trackId = indexPath.row
+        
         }
     }
    
+    
+    func  getAllDetailDatatoListen() {
+        let urlString = "https://parseapi.back4app.com/classes/HealthListen"
+        
+        
+        let headers: HTTPHeaders = [
+            "X-Parse-Application-Id": "DvGa4MJJh3REJP3Q8tAqZDzuAbVPpHW7ZD5k5R25",
+            "X-Parse-REST-API-Key": "Y0mspj596kgiy2QpVKO7ohfIoEF06fYw272wT1Xt",
+            "Accept": "application/json"
+        ]
+        
+        
+        let queue = DispatchQueue(label: "com.cnoon.manager-response-queue",qos: .userInitiated,attributes:.concurrent)
+        
+        
+        Alamofire.request(urlString, method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON(queue: queue, completionHandler: { response in
+         
+            switch response.result {
+            case .success:
+                
+                
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    
+                    print(json)
+                    print(response)
+                    for index in 0..<7 {
+                        var image = json["results"][index]["image"].stringValue
+                        var mp3url = json["results"][index]["mp3url"].stringValue
+                        var title = json["results"][index]["title"].stringValue
+                        var objectid = json["results"][index]["objectid"]["objectId"].stringValue
+                        var listen = AllListeningDetailModel(title: title, imageString: image, mp3url: mp3url,objectid: objectid)
+                        self.helperDetailModel.append(listen)
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                        print("nasz object id wynosi",self.objectid)
+                        for object in self.helperDetailModel as! [AllListeningDetailModel] {
+                            if object.objectid == self.objectid {
+                                self.listenDetailModel.append(object)
+                            }
+                        }
+                        print("Lista w alamo", self.listenDetailModel.count)
+                        self.tableView.reloadData()
+                    }
+                    
+                   
+                    
+                    
+                }
+                break
+            case .failure(let error):
+                
+                print(error)
+                break
+            }
+        }
+      )
+    }
 
 }

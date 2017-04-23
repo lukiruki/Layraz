@@ -14,6 +14,7 @@ class MainPodcastTableViewCell: UITableViewCell {
     @IBOutlet weak var podcastDescriptionLabel: UILabel!
     @IBOutlet weak var podcastTitleLabel: UILabel!
     
+    @IBOutlet weak var imageIndicator: UIActivityIndicatorView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

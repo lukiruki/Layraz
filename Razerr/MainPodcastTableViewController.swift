@@ -7,23 +7,25 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class MainPodcastTableViewController: UITableViewController {
 
+    private   let headers: HTTPHeaders = [
+        "X-Parse-Application-Id": "DvGa4MJJh3REJP3Q8tAqZDzuAbVPpHW7ZD5k5R25",
+        "X-Parse-REST-API-Key": "Y0mspj596kgiy2QpVKO7ohfIoEF06fYw272wT1Xt",
+        "Accept": "application/json"
+    ]
+    
+    var kindofListeningfromKindController: String = ""
     
     var listenAllModel: [ListeningAllModel] = []
-    
-    var listeningApi = ListeningApi()
     
     var image = UIImage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-               
-        self.listeningApi.getAllComedyListenData()
-        
-        let delayQueue = DispatchQueue(label: "com.appcoda.delayqueue", qos: .userInitiated)
         
         tableView.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.2)
         let additionalTime: DispatchTimeInterval = .seconds(2)
@@ -33,21 +35,7 @@ class MainPodcastTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 36.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        
-        
-        
-        delayQueue.asyncAfter(deadline: .now() + additionalTime) {
-            print("drugie")
-            self.listenAllModel = self.listeningApi.getAllData()
-            for i in self.listenAllModel {
-                print(i.name)
-                print(i.description)
-                print(i.imageString)
-            }
-            self.tableView.reloadData()
-            
-        }
-        
+        getAllComedyListenData()
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -65,6 +53,20 @@ class MainPodcastTableViewController: UITableViewController {
     
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "sendobjectidAndImage" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let controller = segue.destination as! UINavigationController
+                let viewController = controller.topViewController as! ListeningTableViewController
+                viewController.objectid = listenAllModel[indexPath.row].objectid
+                print("Object id w MainPodcast", listenAllModel[indexPath.row].objectid)
+                viewController.image = image
+                viewController.kindofListening = kindofListeningfromKindController
+            }
+            
+        }
+    }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Show", for: indexPath) as! MainPodcastTableViewCell
@@ -78,11 +80,13 @@ class MainPodcastTableViewController: UITableViewController {
         
         /////
         
-        var image = UIImage()
+        
         
         let imageUrl = URL(string: listenItem.imageString)
         
         let session = URLSession(configuration: .default)
+        
+        cell.imageIndicator.startAnimating()
         
         let downloadImage = session.dataTask(with: imageUrl!) { (data, response, error) in
             
@@ -95,11 +99,13 @@ class MainPodcastTableViewController: UITableViewController {
                     if let imageData = data {
                         DispatchQueue.main.async {
                             print("udalos ie pobrac")
-                            image = UIImage(data: imageData)!
+                            self.image = UIImage(data: imageData)!
                             
-                            cell.podcastImageView.image = image
+                            cell.podcastImageView.image = self.image
                             cell.podcastImageView.layer.cornerRadius = 30.0
                             cell.podcastImageView.clipsToBounds = true
+                            cell.imageIndicator.stopAnimating()
+                            cell.imageIndicator.removeFromSuperview()
                         
                         }
                         
@@ -128,7 +134,49 @@ class MainPodcastTableViewController: UITableViewController {
     }
     
  
-
+    func  getAllComedyListenData() {
+        let urlString = "https://parseapi.back4app.com/classes/\(kindofListeningfromKindController)"
+        
+        let queue = DispatchQueue(label: "com.cnoon.manager-response-queue",qos: .userInitiated,attributes:.concurrent)
+        
+        Alamofire.request(urlString, method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON(queue: queue, completionHandler: { response in
+            switch response.result {
+            case .success:
+                // print(response)
+                
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    
+                    print(json)
+                    for index in 0..<2 {
+                        var title = json["results"][index]["title"].stringValue
+                        var desc = json["results"][index]["description"].stringValue
+                        var image = json["results"][index]["image"].stringValue
+                        var objectid = json["results"][index]["objectId"].stringValue
+                        var listen = ListeningAllModel(name: title, description: desc, imageString: image, objectid: objectid)
+                        self.listenAllModel.append(listen)
+                        
+                    }
+                    
+                    
+                    DispatchQueue.main.async {
+                        print("Lista w alamo", self.listenAllModel.count)
+                        self.tableView.reloadData()
+                    }
+                    
+                    
+                    
+                }
+                break
+            case .failure(let error):
+                
+                print(error)
+                break
+            }
+        }
+      )
+        
+    }
  
 
 }

@@ -19,10 +19,16 @@ class NotificationsViewController: UIViewController, UIPickerViewDelegate,UIPick
     
     @IBOutlet weak var pickerWordsminute: UIPickerView!
     
+    @IBOutlet weak var wordsProgressBarView: UIView!
+    @IBOutlet weak var packetProgressbarView: UIView!
+    
+    
+    @IBOutlet weak var wordAmountLabel: UILabel!
+    @IBOutlet weak var packetprocentLabel: UILabel!
+    
     @IBOutlet weak var hoursmorningLabel: UILabel!
     @IBOutlet weak var minutemorningLabel: UILabel!
     @IBOutlet weak var minutewordsLabel: UILabel!
-    
     @IBOutlet weak var morningButton: UIButton!
     @IBOutlet weak var wordsButton: UIButton!
     
@@ -33,12 +39,14 @@ class NotificationsViewController: UIViewController, UIPickerViewDelegate,UIPick
     var blurEffectView: UIVisualEffectView?
     
     let center = UNUserNotificationCenter.current()
-    var mainApi = ListeningApi()
     var listenWordsNotifications: [NotificationsWordsModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addProgressAnimation(view: wordsProgressBarView, key: "v1", value: 0.6,duration: 3)
+        addProgressAnimation(view: packetProgressbarView, key: "v2", value: 0.5,duration: 4)
+
         getAllWordsWithAlamofire()
         
         let array = arrayforList()
@@ -47,6 +55,36 @@ class NotificationsViewController: UIViewController, UIPickerViewDelegate,UIPick
         setDelegateandDataSource()
         hiddenButton()
         
+    }
+    
+    
+    func addProgressAnimation(view: UIView, key: String, value: Float, duration: Int) {
+        
+        let circle = view
+        
+        var progressCircle = CAShapeLayer()
+        
+        let circlePath = UIBezierPath(ovalIn: (circle.bounds))
+        
+        progressCircle = CAShapeLayer ()
+        progressCircle.path = circlePath.cgPath
+        progressCircle.strokeColor = UIColor(red: 216.0/255.0, green: 74.0/255.0, blue: 32.0/255.0, alpha: 1.0).cgColor
+        progressCircle.fillColor = UIColor.clear.cgColor
+        progressCircle.lineWidth = 5.0
+        
+        circle.layer.addSublayer(progressCircle)
+        
+        
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.fromValue = 0
+        animation.toValue = value
+        animation.duration = CFTimeInterval(duration)
+        animation.fillMode = kCAFillModeForwards
+        animation.isRemovedOnCompletion = false
+        
+        progressCircle.add(animation, forKey: key)
+        self.view.addSubview(circle)
+       
     }
     
     private func hiddenButton() {
@@ -235,7 +273,6 @@ class NotificationsViewController: UIViewController, UIPickerViewDelegate,UIPick
     
     func setPacketNotifications(increase: Int) {
     
-        print("Jestes w pakiecie")
         let allincrease = UserDefaults.standard.integer(forKey: "allincreaseWords")
         var setAllWordsforUser = allincrease + increase
         UserDefaults.standard.set(setAllWordsforUser, forKey: "allincreaseWords")

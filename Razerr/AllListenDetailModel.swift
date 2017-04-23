@@ -14,12 +14,13 @@ class AllListeningDetailModel {
     var mp3url: String = ""
     var title: String = ""
     var imageString: String = ""
+    var objectid: String = ""
     
-    
-    init(title: String, imageString: String, mp3url: String) {
+    init(title: String, imageString: String, mp3url: String, objectid: String) {
         self.title = title
         self.imageString = imageString
         self.mp3url = mp3url
+        self.objectid = objectid
     }
     
     

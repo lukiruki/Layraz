@@ -14,12 +14,13 @@ class ListeningAllModel {
     var name: String = ""
     var description: String = ""
     var imageString: String = ""
+    var objectid: String = ""
     
-    
-    init(name: String, description: String, imageString: String) {
+    init(name: String, description: String, imageString: String, objectid: String) {
         self.name = name
         self.description = description
         self.imageString = imageString
+        self.objectid = objectid
     }
     
     
