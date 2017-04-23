@@ -32,8 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName:barFont]
         }
         
-        UITabBar.appearance().tintColor =  UIColor(red: 57.0/255.0, green: 66.0/255.0, blue: 100.0/255.0, alpha: 1.0)
-        UITabBar.appearance().backgroundColor = UIColor.black
+        UITabBar.appearance().tintColor =  UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        UITabBar.appearance().barTintColor = UIColor(red: 36.0/255.0, green: 38.0/255.0, blue: 44.0/255.0, alpha: 1.0)
+        
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, error) in
             if accepted {

@@ -21,7 +21,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         return 1
     }
     
-    
     @IBOutlet weak var tbSettings: UITableView!
     
     
@@ -42,14 +41,10 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        
-        // Make self the delegate and datasource of the tableview.
+
         tbSettings.delegate = self
         tbSettings.dataSource = self
         
-        // Make the table view with rounded contents.
         tbSettings.layer.cornerRadius = 15.0
         
         rate = speechSettings.value(forKey: "rate") as! Float
@@ -63,11 +58,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             print(value)
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+  
     
     func prepareVoiceList() {
         for voice in AVSpeechSynthesisVoice.speechVoices() {
@@ -78,9 +69,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             arrVoiceLanguages.append(dictionary as! [String : String])
         }
     }
-    
-    
-    // MARK: UITableView method implementation
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -103,6 +91,11 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let attributedString = NSAttributedString(string: arrVoiceLanguages[row + 1]["languageName"]!, attributes: [NSForegroundColorAttributeName : UIColor.white])
+        return attributedString
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell!
         
@@ -118,19 +111,19 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             case 0:
                 value = rate
                 
-                keyLabel?.text = "Rate"
+                keyLabel?.text = "Szybkość"
                 valueLabel?.text = NSString(format: "%.2f", rate) as String
                 
             case 1:
                 value = pitch
                 
-                keyLabel?.text = "Pitch"
+                keyLabel?.text = "Wysokość tonu"
                 valueLabel?.text = NSString(format: "%.2f", pitch) as String
                 
             default:
                 value = volume
                 
-                keyLabel?.text = "Volume"
+                keyLabel?.text = "Głośność"
                 valueLabel?.text = NSString(format: "%.2f", volume) as String
             }
             
@@ -199,8 +192,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    
-    // MARK: IBAction method implementation
+
     
     @IBAction func saveSettings(_ sender: AnyObject) {
         UserDefaults.standard.set(rate, forKey: "rate")
@@ -213,8 +205,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         
         navigationController?.popViewController(animated: true)
     }
-    
-    
-    // MARK: Custom method implementation
+ 
     
 }

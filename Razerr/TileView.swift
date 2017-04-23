@@ -36,20 +36,20 @@ class TileView: UIImageView {
         
         self.letter = letter
         print("letter in tileView",letter)
-        let image = UIImage(named: "tile")!
+        let image = UIImage(named: "stringfield")!
         
         super.init(image:image)
         
         let scale = sideLength / image.size.width
         
-        self.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
+        self.frame = CGRect(x: 0, y: 0, width: 120, height: 60)
         
         let letterLabel = UILabel(frame: self.bounds)
         letterLabel.textAlignment = NSTextAlignment.center
         letterLabel.textColor = UIColor.white
         letterLabel.backgroundColor = UIColor.clear
         letterLabel.text = String(letter).uppercased()
-        letterLabel.font = UIFont(name: "Verdana-Bold", size: 25.0)
+        letterLabel.font = UIFont(name: "Verdana-Bold", size: 15.0)
         self.addSubview(letterLabel)
         
         self.isUserInteractionEnabled = true

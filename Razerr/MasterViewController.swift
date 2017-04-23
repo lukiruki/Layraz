@@ -15,10 +15,19 @@ class MasterViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var backgroundView: UIImageView!
+    
+    var blurEffectView: UIVisualEffectView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        backgroundView.image = UIImage(named: "background")
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView?.frame = view.bounds
+        backgroundView.addSubview(blurEffectView!)
+        
         usernameTextField.layer.cornerRadius = 8.0
         usernameTextField.layer.masksToBounds = true
         usernameTextField.layer.borderColor = UIColor( red: 255/255, green: 255/255, blue:255/255, alpha: 1.0 ).cgColor

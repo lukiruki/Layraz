@@ -15,7 +15,6 @@ import UIKit
 class GameController {
     
     var gameView: UIView!
-    var level: Level!
     var hud: HUDView!
     
     private var secondsLeft: Int = 0
@@ -45,7 +44,7 @@ class GameController {
         let tileSide = ceil(ScreenWidth * 0.9 / CGFloat(max(sentence.rightSentences.characters.count, sentence.falseSentences.characters.count))) - TileMargin
         
         // wyszukujemy polozenie x lewe pierwszego tile
-        var xOffset = (ScreenWidth - CGFloat(10.0) * (tileSide + TileMargin)) / 2.0
+        var xOffset = (ScreenWidth - CGFloat(12.0) * (tileSide + TileMargin)) / 2.0
         
         // centrujemy nasza pozycje dla tile, ktora ma wartosc od lewego x wiec trzeba to wycentrowac
         xOffset += tileSide / 2.0
@@ -166,13 +165,13 @@ extension GameController: TileDragDelegateProtocol {
                
                 
                 successTile(tileView: tileView, targetView: targetView)
-                data.points += level.pointsPerTitle
+                data.points += 10
                 hud.gamePoints.value = data.points
                 
             } else {
                
                 failureTile(tileView: tileView)
-                data.points -= level.pointsPerTitle/2
+                data.points -= 10/2
                 hud.gamePoints.value = data.points
             }
             

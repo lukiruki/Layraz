@@ -20,7 +20,7 @@ class TargetView: UIImageView {
     init(letter:String, sideLength:CGFloat) {
         self.letter = letter
         
-        let image = UIImage(named: "slot")!
+        let image = UIImage(named: "emptyfield")!
         super.init(image:image)
         
         let scale = sideLength / image.size.width

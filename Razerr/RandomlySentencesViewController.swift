@@ -18,11 +18,11 @@ class RandomlySentencesViewController: UIViewController {
     
     private let controller:GameController
     var gameView: UIView!
-    var level: Level!
     var increaseLevel: Int = 1
     
     var tabSentences: [Sentences] = []
     var increaseTabSentences: Int = 0
+    var yourcheckString: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,6 @@ class RandomlySentencesViewController: UIViewController {
         
         getSentencesForGame()
         
-        level = Level(levelNumber: increaseLevel)
         
         gameView = UIView(frame: CGRect(x: 0,  y: 0, width: ScreenWidth + 400, height: ScreenHeight + 400))
         self.view.addSubview(gameView)
@@ -85,7 +84,7 @@ class RandomlySentencesViewController: UIViewController {
     }
     
     func getSentencesForGame() {
-        let urlString = "https://parseapi.back4app.com/classes/eWritingPastSimple"
+        let urlString = "https://parseapi.back4app.com/classes/\(yourcheckString)"
         
         let queue = DispatchQueue(label: "com.cnoon.manager-response-queue",qos: .userInitiated,attributes:.concurrent)
         
@@ -120,7 +119,6 @@ class RandomlySentencesViewController: UIViewController {
                         }
            
                         self.controller.gameView = self.gameView
-                        self.controller.level = self.level
                         self.controller.dealRandomAnagram()
                     }
                     

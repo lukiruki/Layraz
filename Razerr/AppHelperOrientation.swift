@@ -17,7 +17,5 @@ struct AppHelperOrientation {
             delegate.orientationLock = orientation
         }
     }
-    
- 
 
 }
