@@ -63,10 +63,21 @@ class FIrstCollectionViewController: UICollectionViewController {
         
         names[indexPath.row].isSelected = true
 
+        if indexPath.row == 3 {
+            goToNotificationsViewController()
+        }
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         names[indexPath.row].isSelected = false
+    }
+    
+    func goToNotificationsViewController() {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = mainStoryboard.instantiateViewController(withIdentifier: "notificationViewController") as! NotificationsViewController
+        // go to NotificationController if indexPath is equals 3 with navigationController
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func Logouut(_ sender: Any) {

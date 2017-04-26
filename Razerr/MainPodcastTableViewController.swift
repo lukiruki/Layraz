@@ -59,8 +59,6 @@ class MainPodcastTableViewController: UITableViewController {
                 let controller = segue.destination as! UINavigationController
                 let viewController = controller.topViewController as! ListeningTableViewController
                 viewController.objectid = listenAllModel[indexPath.row].objectid
-                print("Object id w MainPodcast", listenAllModel[indexPath.row].objectid)
-                viewController.image = image
                 viewController.kindofListening = kindofListeningfromKindController
             }
             

@@ -9,6 +9,7 @@
 import UIKit
 
 class FirstCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet var iconImageView: UIImageView!
     @IBOutlet var iconNameLabel: UILabel!
 }

@@ -50,6 +50,21 @@ class MasterViewController: UIViewController {
         usernameTextField.resignFirstResponder()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        AppHelperOrientation.lockOrientation(.portrait)
+        
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        
+        AppHelperOrientation.lockOrientation(.all)
+    }
+    
     
     @IBAction func LoginButton(_ sender: UIButton) {
         

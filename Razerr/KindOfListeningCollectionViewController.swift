@@ -23,6 +23,9 @@ class KindOfListeningCollectionViewController: UICollectionViewController {
     }
 
   
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count

@@ -19,8 +19,9 @@ class ListeningTableViewController: UITableViewController {
     var selectlistenDetailModel: AllListeningDetailModel?
     
     var objectid: String = ""
-    var image: UIImage!
     var kindofListening: String = ""
+    var image = UIImage()
+    var tabAllImage: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,7 @@ class ListeningTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 100
     }
    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,6 +58,41 @@ class ListeningTableViewController: UITableViewController {
         
         cell.songTitleLabel.text = listenItem.title
         
+                let imageUrl = URL(string: listenItem.imageString)
+                let session = URLSession(configuration: .default)
+        
+                let downloadImage = session.dataTask(with: imageUrl!) { (data, response, error) in
+        
+                    if let e = error {
+                        print("Error downloading image",e)
+                    } else {
+        
+                        if let res = response as? HTTPURLResponse {
+                            print("Downloaded cat picture with response code \(res.statusCode)")
+                            if let imageData = data {
+                                DispatchQueue.main.async {
+                                    print("udalos ie pobrac")
+                                    self.image = UIImage(data: imageData)!
+        
+                                    cell.coverImageView.image = self.image
+                                    cell.coverImageView.layer.cornerRadius = 30.0
+                                    cell.coverImageView.clipsToBounds = true
+                                    self.tabAllImage.append(self.image)
+                                }
+        
+                            }else {
+                                print("Couldn't get image: Image is nil")
+                            }
+                        } else {
+                            print("Couldn't get response code for some reason")
+                        }
+                        
+                    }
+                }
+                
+                downloadImage.resume()
+        
+        
          cell.backgroundColor = UIColor.clear
         
         return cell
@@ -74,6 +110,7 @@ class ListeningTableViewController: UITableViewController {
             let indexPath = tableView.indexPathForSelectedRow!
             selectlistenDetailModel = listenDetailModel[indexPath.row]
             playerVC.selectlistenDetailModel = selectlistenDetailModel
+            playerVC.imageFromListeningViewController = tabAllImage[indexPath.row]
         
         }
     }
