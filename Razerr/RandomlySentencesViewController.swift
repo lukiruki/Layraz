@@ -112,7 +112,7 @@ class RandomlySentencesViewController: UIViewController {
                     DispatchQueue.main.async {
 
                         if self.tabSentences.count != 0 {
-                            print("Rozmiar tabicy Senetences",self.tabSentences.count)
+                            print("Size arrays' tabsentence",self.tabSentences.count)
                             
                             
                             self.controller.sentence = self.tabSentences[self.increaseTabSentences]

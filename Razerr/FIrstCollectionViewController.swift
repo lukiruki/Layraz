@@ -76,7 +76,6 @@ class FIrstCollectionViewController: UICollectionViewController {
     func goToNotificationsViewController() {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = mainStoryboard.instantiateViewController(withIdentifier: "notificationViewController") as! NotificationsViewController
-        // go to NotificationController if indexPath is equals 3 with navigationController
         self.navigationController?.pushViewController(controller, animated: true)
     }
     

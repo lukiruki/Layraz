@@ -29,7 +29,7 @@ class ListeningTableViewController: UITableViewController {
         tableView.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.2)
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.separatorColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.0)
-        
+
         tableView.estimatedRowHeight = 36.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
@@ -152,13 +152,13 @@ class ListeningTableViewController: UITableViewController {
                     }
                     
                     DispatchQueue.main.async {
-                        print("nasz object id wynosi",self.objectid)
+                        print("Object id equals",self.objectid)
                         for object in self.helperDetailModel as! [AllListeningDetailModel] {
                             if object.objectid == self.objectid {
                                 self.listenDetailModel.append(object)
                             }
                         }
-                        print("Lista w alamo", self.listenDetailModel.count)
+                        print("Lista in alamo", self.listenDetailModel.count)
                         self.tableView.reloadData()
                     }
                     

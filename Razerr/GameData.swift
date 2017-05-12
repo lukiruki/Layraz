@@ -13,7 +13,7 @@ class GameData {
     
     var points: Int = 0 {
         didSet {
-            // obserwujemy didset czy gracz ma mniej niz 0 pkt. Jezeli tak to przypisanie mu wartosc 0, a jezeli ma wiecej niz 0 to ilosc pkt jaką zdobył
+        
             points = max(points,0)
         }
     }

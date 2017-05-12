@@ -123,7 +123,6 @@ class MasterViewController: UIViewController {
                     print("wrong username & password")
                 }
                
-            // Yeah! Hand response
             
             }
         }
@@ -135,58 +134,58 @@ class MasterViewController: UIViewController {
     
   
    
-    func getController() {
-        
-        let urlString = "https://parseapi.back4app.com/classes/Spot"
-        
-        let headers: HTTPHeaders = [
-            "X-Parse-Application-Id": "pb0CI3Y8T9cDcV9SXszZ5KZsFhlPmFNQPjVQz19X",
-            "X-Parse-REST-API-Key": "OhBTU6qlpvotBRLuc1qWfiWs9YPugDA4tuSaSZBD",
-            "Accept": "application/json"
-        ]
-        
-        Alamofire.request(urlString, method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON {
-            response in
-            switch response.result {
-            case .success:
-                print(response)
-                
-                break
-            case .failure(let error):
-                
-                print(error)
-            }
-        }
-        
-    }
-    
-    func updateController() {
-        
-        let urlString = "https://parseapi.back4app.com/classes/Spot"
-        
-        let headers: HTTPHeaders = [
-            "X-Parse-Application-Id": "pb0CI3Y8T9cDcV9SXszZ5KZsFhlPmFNQPjVQz19X",
-            "X-Parse-REST-API-Key": "OhBTU6qlpvotBRLuc1qWfiWs9YPugDA4tuSaSZBD",
-            "Accept": "application/json"
-        ]
-        let parameters: Parameters = ["Age": "16","Name":"Ola","Description":"Moj nowy obiekt"]
-        
-        Alamofire.request(urlString, method: .post,parameters: parameters,encoding: JSONEncoding.default, headers: headers).responseJSON {
-            response in
-            switch response.result {
-            case .success:
-                print(response)
-                
-                break
-            case .failure(let error):
-                
-                print(error)
-            }
-        }
-        
-        
-    }
-    
+//    func getController() {
+//        
+//        let urlString = "https://parseapi.back4app.com/classes/Spot"
+//        
+//        let headers: HTTPHeaders = [
+//            "X-Parse-Application-Id": "pb0CI3Y8T9cDcV9SXszZ5KZsFhlPmFNQPjVQz19X",
+//            "X-Parse-REST-API-Key": "OhBTU6qlpvotBRLuc1qWfiWs9YPugDA4tuSaSZBD",
+//            "Accept": "application/json"
+//        ]
+//        
+//        Alamofire.request(urlString, method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON {
+//            response in
+//            switch response.result {
+//            case .success:
+//                print(response)
+//                
+//                break
+//            case .failure(let error):
+//                
+//                print(error)
+//            }
+//        }
+//        
+//    }
+//    
+//    func updateController() {
+//        
+//        let urlString = "https://parseapi.back4app.com/classes/Spot"
+//        
+//        let headers: HTTPHeaders = [
+//            "X-Parse-Application-Id": "pb0CI3Y8T9cDcV9SXszZ5KZsFhlPmFNQPjVQz19X",
+//            "X-Parse-REST-API-Key": "OhBTU6qlpvotBRLuc1qWfiWs9YPugDA4tuSaSZBD",
+//            "Accept": "application/json"
+//        ]
+//        let parameters: Parameters = ["Age": "16","Name":"Ola","Description":"Moj nowy obiekt"]
+//        
+//        Alamofire.request(urlString, method: .post,parameters: parameters,encoding: JSONEncoding.default, headers: headers).responseJSON {
+//            response in
+//            switch response.result {
+//            case .success:
+//                print(response)
+//                
+//                break
+//            case .failure(let error):
+//                
+//                print(error)
+//            }
+//        }
+//        
+//        
+//    }
+//    
     
     
 

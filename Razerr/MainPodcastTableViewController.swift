@@ -76,10 +76,6 @@ class MainPodcastTableViewController: UITableViewController {
         print(listenItem.name)
         cell.podcastDescriptionLabel.text = listenItem.description
         
-        /////
-        
-        
-        
         let imageUrl = URL(string: listenItem.imageString)
         
         let session = URLSession(configuration: .default)
@@ -118,8 +114,6 @@ class MainPodcastTableViewController: UITableViewController {
         }
         
         downloadImage.resume()
-        
-        //////
         
         cell.backgroundColor = UIColor.clear
 
@@ -162,8 +156,6 @@ class MainPodcastTableViewController: UITableViewController {
                         self.tableView.reloadData()
                     }
                     
-                    
-                    
                 }
                 break
             case .failure(let error):
@@ -176,5 +168,4 @@ class MainPodcastTableViewController: UITableViewController {
         
     }
  
-
 }

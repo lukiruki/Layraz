@@ -13,6 +13,8 @@ class AllWordsViewController: UIViewController,UITableViewDataSource,UITableView
 
     let speechSynthesizer = AVSpeechSynthesizer()
     @IBOutlet weak var tableView: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,10 +22,6 @@ class AllWordsViewController: UIViewController,UITableViewDataSource,UITableView
         tableView.delegate = self
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3

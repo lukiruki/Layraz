@@ -35,7 +35,7 @@ class HUDView: UIView {
         pointsLabel.text = " Punkty:"
         self.addSubview(pointsLabel)
         
-        // dzieki temu zabiegowi bedziemy mogli uzyc touches w tileView poniewaz hud znajduje sie na samej gorze i przesłania inne widoki wiec musimy mu wylaczyc touches, zeby widok pod nim mogl go uzywac
+        // turn off interaction on HudView by what we will be able to take a TileView and drop on a TargetView
         self.isUserInteractionEnabled = false
     }
 }

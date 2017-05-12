@@ -21,8 +21,6 @@ class MainReadingCollectionViewController: UICollectionViewController {
 
         collectionView?.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.2)
        
-      
-       
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {

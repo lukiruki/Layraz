@@ -15,16 +15,12 @@ protocol TileDragDelegateProtocol {
 
 class TileView: UIImageView {
     
-    // zapisujemy obecna transformacje obiektu Image tzn jest to poczatkowa wielkosc jaka posiada obrazek, ktory pozniej bedzie powiekszony przy przeciaganiu
     private var tempTransform: CGAffineTransform = CGAffineTransform.identity
-    
-    var letter: String
-    
     private var xOffset: CGFloat = 0.0
     private var yOffset: CGFloat = 0.0
     
+    var letter: String
     var isMatched: Bool = false
-    
     var dragDelegate: TileDragDelegateProtocol?
     
     required init(coder aDecoder:NSCoder) {
@@ -54,16 +50,15 @@ class TileView: UIImageView {
         
         self.isUserInteractionEnabled = true
         
-        // ustawiamy cien dla obrazka
+        
         self.layer.shadowColor = UIColor.black.cgColor
-        // cien jak narazie jest niewidoczny ale bedzie w touchMoved i zniknie w touchEnded
         self.layer.shadowOpacity = 0
         self.layer.shadowOffset = CGSize(width: 10, height: 10)
         self.layer.shadowRadius = 15.0
-        // ustawiamy masks na false przez co layer utworzy nam cien nawet poza granicami obrazka
+        // set masks on false and layer create shadow even ustawiamy masks na false przez co layer utworzy nam cien nawet poza granicami obrazka
         self.layer.masksToBounds = false
         
-        // ustawiamy ksztalt cienia
+        // set shape of shadow
         let path = UIBezierPath(rect: self.bounds)
         self.layer.shadowPath = path.cgPath
         
@@ -76,10 +71,8 @@ class TileView: UIImageView {
             xOffset = point.x - self.center.x
             yOffset = point.y - self.center.y
             self.layer.shadowOpacity = 0.8
-            
-            
-            // zapisujemy wielkosc obrazka i pozniej zwiekszamy
-            
+    
+            // save size picture
             tempTransform = self.transform
             self.transform = self.transform.scaledBy(x: 1.2, y: 1.2)
         }
@@ -106,13 +99,12 @@ class TileView: UIImageView {
     }
     
     func randomize() {
-        //1
+      
         //set random rotation of the tile
         //anywhere between -0.2 and 0.3 radians
         let rotation = CGFloat(randomNumber(minX:0, maxX:50)) / 100.0 - 0.2
         self.transform = CGAffineTransform(rotationAngle: rotation)
         
-        //2
         //move randomly upwards
         let yOffset = CGFloat(randomNumber(minX: 0, maxX: 10) - 10)
         self.center = CGPoint(x: self.center.x, y: self.center.y + yOffset)
