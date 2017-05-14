@@ -55,7 +55,7 @@ class TileView: UIImageView {
         self.layer.shadowOpacity = 0
         self.layer.shadowOffset = CGSize(width: 10, height: 10)
         self.layer.shadowRadius = 15.0
-        // set masks on false and layer create shadow even ustawiamy masks na false przez co layer utworzy nam cien nawet poza granicami obrazka
+        // set masks on false and layer create shadow even beyond picture's area
         self.layer.masksToBounds = false
         
         // set shape of shadow

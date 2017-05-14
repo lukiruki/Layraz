@@ -68,7 +68,6 @@ class ReadingViewController: UIViewController, AVSpeechSynthesizerDelegate,Setti
             registerDefaultSettings()
         }
         
-        setInitialFont()
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -105,18 +104,6 @@ class ReadingViewController: UIViewController, AVSpeechSynthesizerDelegate,Setti
         
         UserDefaults.standard.register(defaults: defaultSpeechSettings)
         
-    }
-    
-    
-    // This function will be set a new format for marked text which will read native speaker
-    func setInitialFont() {
-        // we check size a whole text for tvEditor
-        let rangeOfWholeText = NSMakeRange(0, tvEditor.text.utf16.count)
-        let attributedText = NSMutableAttributedString(string: tvEditor.text)
-        attributedText.addAttribute(NSFontAttributeName, value:  UIFont(name: "Arial", size: 18.0)!, range: rangeOfWholeText)
-        tvEditor.textStorage.beginEditing()
-        tvEditor.textStorage.replaceCharacters(in: rangeOfWholeText, with: attributedText)
-        tvEditor.textStorage.endEditing()
     }
     
     
@@ -209,7 +196,6 @@ class ReadingViewController: UIViewController, AVSpeechSynthesizerDelegate,Setti
         
         if currentUtterance == totalUtterances {
             animateActionButtonAppearance(shouldHideSpeakButton: false)
-            unselectLastWord()
             previousSelectedRange = nil
         }
     }
@@ -272,25 +258,6 @@ class ReadingViewController: UIViewController, AVSpeechSynthesizerDelegate,Setti
     }
     
     
-    func unselectLastWord() {
-        if let selectedRange = previousSelectedRange {
-            // Get the attributes of the last selected attributed word.
-            let currentAttributes = tvEditor.attributedText.attributes(at: selectedRange.location, effectiveRange: nil)
-            // Keep the font attribute.
-            let fontAttribute: AnyObject? = currentAttributes[NSFontAttributeName] as AnyObject?
-            
-            // Create a new mutable attributed string using the last selected word.
-            let attributedWord = NSMutableAttributedString(string: tvEditor.attributedText.attributedSubstring(from: selectedRange).string)
-            
-            // Set the previous font attribute, and make the foreground color black.
-            attributedWord.addAttribute(NSForegroundColorAttributeName, value: UIColor.black, range: NSMakeRange(0, attributedWord.length))
-            attributedWord.addAttribute(NSFontAttributeName, value: fontAttribute!, range: NSMakeRange(0, attributedWord.length))
-            
-            // Update the text storage property and replace the last selected word with the new attributed string.
-            tvEditor.textStorage.beginEditing()
-            tvEditor.textStorage.replaceCharacters(in: selectedRange, with: attributedWord)
-            tvEditor.textStorage.endEditing()
-        }
-    }
+  
 
 }
